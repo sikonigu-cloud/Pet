@@ -283,15 +283,14 @@ textarea.in{height:80px;font-size:12px!important;font-weight:600!important;resiz
 .snowfx{position:absolute;inset:0;pointer-events:none;z-index:3;
   background-image:radial-gradient(circle,#fff 0 2px,transparent 2.6px),radial-gradient(circle,#fff 0 1.4px,transparent 2px),radial-gradient(circle,rgba(255,255,255,.85) 0 2.6px,transparent 3.2px);
   background-size:55px 55px,37px 37px,90px 90px;animation:snowfall 9s linear infinite;opacity:.95}
-body.ny{background-color:#dfe9f5;background-image:radial-gradient(#fff 2.2px,transparent 2.6px)}
-.ny .hero-scene{background:linear-gradient(#bcd6ee 0 60%,#f4f8ff 60% 70%,#e6eef8 70%)}
-.ny .hero-scene .sun{background:#fff8d8;width:22%;left:10%;top:8%}
-.ny .tree{background:radial-gradient(circle at 50% 22%,#fff 0 34%,#7fbf72 35%);border-color:#5f9a55}
-.ny .scene.garden{background:linear-gradient(#c9dcef 0 30%,#f4f8ff 30%)}
-.ny .garden .path{background:#e3ecf7;border-color:#c5d5e8}
-.ny .scene.yard{background:linear-gradient(#c9dcef 0 26%,#f4f8ff 26%)}
-.ny .room .window{background:linear-gradient(#b9d3ec,#e3eefa 55%,#fff 56%,#eef4fb)}
-.ny .room .window i{background:#fff;box-shadow:0 0 0 .4cqw #dfe8f2}
+body.snow{background-color:#dfe9f5;background-image:radial-gradient(#fff 2.2px,transparent 2.6px)}
+.snow .hero-scene{background:linear-gradient(#bcd6ee 0 60%,#f4f8ff 60% 70%,#e6eef8 70%)}
+.snow .hero-scene .sun{background:#fff8d8;width:22%;left:10%;top:8%}
+.snow .tree{background:radial-gradient(circle at 50% 22%,#fff 0 34%,#7fbf72 35%);border-color:#5f9a55}
+.snow .scene.garden{background:linear-gradient(#c9dcef 0 30%,#f4f8ff 30%)}
+.snow .garden .path{background:#e3ecf7;border-color:#c5d5e8}
+.snow .room .window{background:linear-gradient(#b9d3ec,#e3eefa 55%,#fff 56%,#eef4fb)}
+.snow .room .window i{background:#fff;box-shadow:0 0 0 .4cqw #dfe8f2}
 .garland{position:absolute;left:0;right:0;top:0;height:12%;z-index:2;pointer-events:none}
 .garland svg{width:100%;height:100%}
 .garland .b{animation:blink 1.6s ease-in-out infinite}
@@ -304,6 +303,43 @@ body.ny{background-color:#dfe9f5;background-image:radial-gradient(#fff 2.2px,tra
 @keyframes ring{from{transform:scale(.7);opacity:1}to{transform:scale(1.5);opacity:0}}
 .nybadge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;border:2px solid var(--line);background:#fff;font-weight:900;font-size:13px;color:#c0392b}
 .giftbox{font-size:70px;line-height:1;animation:pop .6s}
+
+/* ---------- PLAY: squishy time ---------- */
+.scene.playmat{aspect-ratio:1/1.22;background:radial-gradient(circle,#ffffff99 0 2.4px,transparent 3px) 0 0/9cqw 9cqw,linear-gradient(#f9e3ea,#f3d3df 70%,#eec4d3)}
+.playmat .mat{position:absolute;left:4%;right:4%;top:22%;bottom:22%;border-radius:8cqw;background:repeating-linear-gradient(45deg,#fff6 0 3cqw,transparent 3cqw 6cqw),#f7c7d6;border:2.5px solid #d99aae}
+.squishes{position:absolute;left:7%;right:7%;top:25%;display:grid;grid-template-columns:1fr 1fr;gap:5cqw 6cqw;z-index:5}
+.sq{position:relative;aspect-ratio:1.45;transform-origin:50% 92%;touch-action:manipulation;transition:transform .35s}
+.sq .blob{position:absolute;inset:4% 3% 0;border-radius:50% 50% 42% 42% / 60% 60% 40% 40%;background:radial-gradient(ellipse at 30% 22%,#ffffffcc 0 10%,transparent 11%),radial-gradient(ellipse at 50% 120%,#0000001a 0 40%,transparent 41%),var(--c);border:2.5px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.sq .spic{position:absolute;left:0;right:0;top:14%;display:flex;justify-content:center;font-size:12.5cqw;line-height:1}
+.sq .spic .pic img{width:1.3em;height:1em;object-fit:contain}
+.sq .face{position:absolute;left:30%;right:30%;bottom:8%;height:22%}
+.sq.press{transform:scale(1.22,.68);transition:transform .09s}
+.sq.slow{animation:sqrise 1.4s cubic-bezier(.2,.8,.25,1)}
+@keyframes sqrise{0%{transform:scale(1.22,.68)}55%{transform:scale(.96,1.05)}78%{transform:scale(1.02,.98)}100%{transform:none}}
+.sq.right .blob{box-shadow:0 0 0 1.4cqw #8ccfa4,0 4px 0 var(--line)}
+.sq.wrong{opacity:.5}
+.scene.playmat>.petbox{width:24%;bottom:1.5%}
+.petbox.squish .pet{animation:petsq .45s ease 3}
+@keyframes petsq{40%{transform:scale(1.12,.86)}}
+.squishfx{position:absolute;font-weight:900;font-size:6cqw;color:#d14d7a;pointer-events:none;z-index:9;animation:spark 1s ease-out forwards}
+/* ---------- WINTER: snowball game ---------- */
+.scene.snowfield{aspect-ratio:1/1.15;background:linear-gradient(#c3d9ee 0 24%,#f5f9ff 24%)}
+.snowfield .hill{position:absolute;border-radius:50% 50% 0 0;background:#eaf2fb}
+.hole{position:absolute;width:30%;height:27%;transform:translateX(-50%);overflow:hidden;z-index:4;cursor:pointer}
+.hole::after{content:'';position:absolute;left:-4%;right:-4%;bottom:0;height:24%;border-radius:50% 50% 0 0;background:#fff;box-shadow:inset 0 1.2cqw 0 #dfe9f5;z-index:3}
+.hole .sm{position:absolute;left:8%;right:8%;bottom:6%;height:88%;transform:translateY(105%);transition:transform .32s cubic-bezier(.3,1.4,.5,1)}
+.hole.up .sm{transform:translateY(0)}
+.hole.hit .sm{transition:transform .5s ease-in;transform:translateY(110%) rotate(25deg)}
+.hole .sm svg{position:absolute;inset:0;width:100%;height:100%}
+.hole .sign{position:absolute;left:-2%;right:-2%;top:58%;padding:.6cqw .5cqw;border-radius:1.6cqw;background:#fff3d6;border:2px solid var(--line);font-weight:900;text-align:center;line-height:1.05;color:var(--ink)}
+.hole.nope .sm{animation:wob .5s}
+@keyframes wob{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.scene.snowfield>.petbox{width:22%;bottom:1%}
+.snowball{position:fixed;width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 40%,#dbe8f6 75%);border:2px solid #9fb6cf;z-index:45;pointer-events:none}
+.splat{position:absolute;font-size:9cqw;pointer-events:none;z-index:8;animation:spark .8s ease-out forwards}
+.act.wide{grid-column:1/-1;flex-direction:row;justify-content:center;gap:10px;font-size:16px;padding:10px;background:linear-gradient(90deg,#e3f0fb,#f6fbff)}
+.act.wide span{font-size:28px}
+.act.wide small{font-weight:700;font-size:12px;color:#5c7a96}
 </style>
 </head>
 <body>
@@ -419,10 +455,16 @@ const ON_PHONE = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
 
 /* ================= NEW YEAR SEASON =================
    on by itself from 14 December to 14 January (device date); the teacher can also switch it on/off in Settings */
+/* WINTER: 17 November – 1 March every year. NEW YEAR: 14 December – 14 January (it takes over from winter on its days). */
 function inSeason(d = new Date()){ const m = d.getMonth(), day = d.getDate(); return (m === 11 && day >= 14) || (m === 0 && day <= 14); }
-function isNY(){ let mode = 'auto'; try { mode = DB.nyMode || 'auto'; } catch(e){} return mode === 'on' ? true : mode === 'off' ? false : inSeason(); }
+function inWinter(d = new Date()){ const m = d.getMonth(), day = d.getDate(); return (m === 10 && day >= 17) || m === 11 || m === 0 || m === 1 || (m === 2 && day === 1); }
+function seasonMode(){ let m = 'auto'; try { m = DB.season || (DB.nyMode === 'on' ? 'ny' : DB.nyMode === 'off' ? 'off' : 'auto'); } catch(e){} return m; }
+function season(){ const m = seasonMode(); if (m === 'ny' || m === 'winter') return m; if (m === 'off') return ''; return inSeason() ? 'ny' : inWinter() ? 'winter' : ''; }
+function isNY(){ return season() === 'ny'; }
+function isSnow(){ return season() !== ''; }      /* snowy look: in winter and at New Year */
+function isWinterOnly(){ return season() === 'winter'; }
 const seasonId = (d = new Date()) => String(d.getMonth() === 0 ? d.getFullYear() - 1 : d.getFullYear());
-function applySeason(){ document.body.classList.toggle('ny', isNY()); }
+function applySeason(){ document.body.classList.toggle('ny', isNY()); document.body.classList.toggle('snow', isSnow()); }
 const SNOW = '<div class="snowfx"></div>';
 function garlandHTML(){
   const cols = ['#ff5c5c','#ffd23f','#4cb963','#5aa9e6','#ff7aa8','#9b7be0'];
@@ -442,6 +484,7 @@ const SVGS = {
   bottle:`<svg viewBox="0 0 100 100"><rect x="42" y="6" width="16" height="10" rx="2" fill="#3d8be8" stroke="#4b3536" stroke-width="3"/><path d="M42 16H58V26Q70 32 70 44V88Q70 94 64 94H36Q30 94 30 88V44Q30 32 42 26Z" fill="#cfe9f6" stroke="#4b3536" stroke-width="4" stroke-linejoin="round"/><rect x="30" y="50" width="40" height="18" fill="#7cc58a" stroke="#4b3536" stroke-width="3"/></svg>`,
   rubbish:`<svg viewBox="0 0 100 100"><path d="M18 70L30 56L44 64L40 80L24 84Z" fill="#f2f2f2" stroke="#4b3536" stroke-width="3.5" stroke-linejoin="round"/><path d="M26 64L36 72M32 58L30 78" stroke="#bbb" stroke-width="2"/><rect x="50" y="46" width="20" height="36" rx="3" fill="#e74c3c" stroke="#4b3536" stroke-width="3.5" transform="rotate(20 60 64)"/><path d="M70 84Q74 70 86 72Q90 82 82 88Z" fill="#f5c518" stroke="#4b3536" stroke-width="3"/></svg>`,
   sand:`<svg viewBox="0 0 100 100"><path d="M6 84Q30 40 52 56Q72 36 94 84Z" fill="#f1d2a7" stroke="#c99a5f" stroke-width="4" stroke-linejoin="round"/><circle cx="34" cy="70" r="2" fill="#c99a5f"/><circle cx="58" cy="66" r="2" fill="#c99a5f"/><circle cx="70" cy="76" r="2" fill="#c99a5f"/><path d="M66 22L76 50" stroke="#4b3536" stroke-width="4"/><path d="M60 50H92L86 70H66Z" fill="#ff6b6b" stroke="#4b3536" stroke-width="3.5" stroke-linejoin="round"/></svg>`,
+  snowball:`<svg viewBox="0 0 100 100"><circle cx="50" cy="54" r="34" fill="#fff" stroke="#4b3536" stroke-width="4"/><path d="M28 66Q44 80 68 72" stroke="#cfe0f1" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="40" cy="42" r="6" fill="#eaf2fb"/></svg>`,
   skirt:`<svg viewBox="0 0 100 100"><rect x="30" y="14" width="40" height="13" rx="4" fill="#d94690" stroke="#4b3536" stroke-width="4"/><path d="M30 27H70L90 86H10Z" fill="#ff6fa8" stroke="#4b3536" stroke-width="4" stroke-linejoin="round"/></svg>`
 };
 function prepSVG(p){
@@ -559,6 +602,13 @@ BUILTIN.push({id:'nywords', title:'❄️ New Year words', ic:'🎄', builtin:tr
   ['Happy New Year!','С Новым годом!','🎆',1],['Merry Christmas!','Счастливого Рождества!','🎄',1],["It's snowing.",'Идёт снег.','🌨️',1],["It's cold!",'Холодно!','🥶',1],['This is for you.','Это тебе.','🎁',1],['Thank you!','Спасибо!','💛',1]
 ].map(([en,ru,pic,ph]) => ({en, ru, pic, ph:!!ph}))});
 const NY_WORDS = BUILTIN.find(p => p.id === 'nywords').words.filter(w => !w.ph);
+BUILTIN.push({id:'winterwords', title:'❄️ Winter words', ic:'⛄', builtin:true, book:5, words:[
+  ['winter','зима','🌨️'],['snow','снег','❄️'],['cold','холодный','🥶'],['coat','пальто','🧥'],['boots','сапоги','🥾'],['gloves','перчатки','🧤'],
+  ['scarf','шарф','🧣'],['snowman','снеговик','☃️'],['snowball','снежок','svg:snowball'],['ski','кататься на лыжах','🎿'],['skate','кататься на коньках','⛸️'],
+  ['sledge','санки','🛷'],['ice','лёд','🧊'],['penguin','пингвин','🐧'],['polar bear','белый медведь','🐻‍❄️'],['hot chocolate','горячий шоколад','☕'],
+  ["It's cold.",'Холодно.','🥶',1],["It's snowing.",'Идёт снег.','🌨️',1],['Put on your hat!','Надень шапку!','🧢',1],['I can ski.','Я умею кататься на лыжах.','🎿',1],
+  ["Let's make a snowman!",'Давай слепим снеговика!','☃️',1],['I like winter.','Я люблю зиму.','❄️',1]
+].map(([en,ru,pic,ph]) => ({en, ru, pic, ph:!!ph}))});
 const ALL_WORDS = [...ALL_KB, ...ALL_KB2.filter(w => !ALL_KB.some(x => x.en === w.en && x.ru === w.ru))];
 
 /* ================= SAVE DATA ================= */
@@ -623,6 +673,8 @@ function wearHTML(w = {}){
   if (w.eyes === 'mask') s += `<path fill-rule="evenodd" d="M48 90Q58 72 100 82Q142 72 152 90Q154 108 132 110Q112 112 100 100Q88 112 68 110Q46 108 48 90ZM64 95a12 11 0 1 0 24 0a12 11 0 1 0 -24 0ZM112 95a12 11 0 1 0 24 0a12 11 0 1 0 -24 0Z" fill="${c('mask')}" ${st}/><path d="M50 90L36 84M150 90L164 84" stroke="${c('mask')}" stroke-width="5" stroke-linecap="round"/>`;
   if (w.eyes === 'patch') s += `<path d="M110 86L46 64M138 90L160 98" stroke="#222" stroke-width="4" stroke-linecap="round"/><ellipse cx="124" cy="95" rx="17" ry="16" fill="#222" stroke="${L}" stroke-width="2"/><path d="M118 90L130 100M130 90L118 100" stroke="#fff" stroke-width="2" opacity=".5"/>`;
   if (w.neck === 'nyscarf') s += `<path d="M58 132Q100 150 142 132L144 146Q100 164 56 146Z" fill="#fff" stroke="${L}" stroke-width="3"/><path d="M66 136L74 152M82 141L88 156M98 143L102 158M114 141L118 156M130 136L134 152" stroke="${c('nyscarf')}" stroke-width="6"/><path d="M118 146L126 174L112 172Z" fill="#fff" stroke="${L}" stroke-width="3"/><path d="M116 154L124 154M118 164L125 164" stroke="${c('nyscarf')}" stroke-width="4"/>`;
+  if (w.neck === 'knitscarf') s += `<path d="M58 132Q100 150 142 132L144 146Q100 164 56 146Z" fill="${c('knitscarf')}" stroke="${L}" stroke-width="3"/><path d="M62 140L68 146L74 140L80 146L86 140L92 146L98 141L104 146L110 141L116 146L122 140L128 146L134 140L140 145" stroke="#fff" stroke-width="2.5" fill="none"/><path d="M118 146L126 174L112 172Z" fill="${c('knitscarf')}" stroke="${L}" stroke-width="3"/><path d="M114 176L112 182M119 176L119 183M124 175L127 181" stroke="${c('knitscarf')}" stroke-width="3" stroke-linecap="round"/>`;
+  if (w.eyes === 'goggles') s += `<path d="M40 94H160" stroke="#3b3b4a" stroke-width="7"/><rect x="54" y="78" width="92" height="34" rx="17" fill="${c('goggles')}" fill-opacity=".8" stroke="${L}" stroke-width="3.5"/><path d="M64 88Q80 82 96 86" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".8"/><path d="M100 80V110" stroke="${L}" stroke-width="2.5"/>`;
   if (w.eyes === 'snowglasses') s += [76,124].map(x => `<circle cx="${x}" cy="95" r="17" fill="rgba(255,255,255,.2)" stroke="${c('snowglasses')}" stroke-width="4.5"/>` + [0,60,120,180,240,300].map(a => `<path d="M${x} 74V68M${x-3} 70L${x} 73L${x+3} 70" stroke="${c('snowglasses')}" stroke-width="2.4" fill="none" stroke-linecap="round" transform="rotate(${a} ${x} 95)"/>`).join('')).join('') + `<path d="M93 93H107" stroke="${c('snowglasses')}" stroke-width="4.5"/>`;
   /* head */
   const h = w.head;
@@ -644,6 +696,8 @@ function wearHTML(w = {}){
   if (h === 'antlers') s += mirror(`<path d="M80 50Q72 30 64 12M70 32Q58 30 50 20M66 20Q72 10 72 0" stroke="${L}" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M80 50Q72 30 64 12M70 32Q58 30 50 20M66 20Q72 10 72 0" stroke="#b07a4a" stroke-width="5.5" fill="none" stroke-linecap="round"/>`) + `<path d="M58 58Q100 30 142 58" stroke="#e74c3c" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="58" cy="58" r="5" fill="#ffd23f" stroke="${L}" stroke-width="2"/><circle cx="142" cy="58" r="5" fill="#ffd23f" stroke="${L}" stroke-width="2"/>`;
   if (h === 'elfhat') s += `<path d="M60 54Q66 8 112 -6Q146 -12 164 14Q148 4 134 12Q144 32 140 54Z" fill="${c('elfhat')}" ${st}/><circle cx="164" cy="16" r="8" fill="#f7c948" ${st}/><path d="M56 48L64 60L72 48L80 60L88 48L96 60L104 48L112 60L120 48L128 60L136 48L144 60" fill="none" stroke="#e74c3c" stroke-width="5" stroke-linejoin="round"/><rect x="54" y="42" width="92" height="9" rx="4" fill="#e74c3c" ${st}/>`;
   if (h === 'santa2') s += `<path d="M60 54Q60 10 100 8Q140 10 140 54Z" fill="${c('santa2')}" ${st}/><path d="M76 24L124 24M70 38H130" stroke="#fff" stroke-width="4" stroke-dasharray="2 6" stroke-linecap="round"/><rect x="54" y="44" width="92" height="17" rx="8.5" fill="#fff" ${st}/><circle cx="100" cy="6" r="11" fill="#fff" ${st}/>`;
+  if (h === 'earmuffs') s += `<path d="M44 92Q42 30 100 26Q158 30 156 92" fill="none" stroke="${L}" stroke-width="9" stroke-linecap="round"/><path d="M44 92Q42 30 100 26Q158 30 156 92" fill="none" stroke="#c9c3d6" stroke-width="5" stroke-linecap="round"/>${[42,158].map(x => `<circle cx="${x}" cy="94" r="18" fill="${c('earmuffs')}" ${st}/><circle cx="${x-5}" cy="88" r="5" fill="#fff" opacity=".6"/>`).join('')}`;
+  if (h === 'furhat') s += `${[52,148].map(x => `<ellipse cx="${x}" cy="76" rx="13" ry="22" fill="#d9b48a" ${st}/>`).join('')}<path d="M58 48Q60 4 100 4Q140 4 142 48Z" fill="${c('furhat')}" ${st}/><rect x="50" y="38" width="100" height="24" rx="12" fill="#d9b48a" ${st}/><path d="M60 50Q64 46 68 50M80 50Q84 46 88 50M100 50Q104 46 108 50M120 50Q124 46 128 50" stroke="#b89068" stroke-width="2.5" fill="none"/>`;
   if (h === 'halo') s += `<ellipse cx="100" cy="2" rx="36" ry="9" fill="none" stroke="${L}" stroke-width="10"/><ellipse cx="100" cy="2" rx="36" ry="9" fill="none" stroke="#f7c948" stroke-width="6"/><ellipse cx="100" cy="0" rx="30" ry="6" fill="none" stroke="#fff6c2" stroke-width="2"/>`;
   return s;
 }
@@ -765,7 +819,18 @@ const ITEMS = {
   bells:{deco:'🔔', spot:'wallL', name:'bell', price:20, lvl:1, ny:1}, candle:{deco:'🕯️', spot:'shelf', name:'candle', price:15, lvl:1, ny:1},
   sledge:{deco:'🛷', spot:'floorR2', name:'sledge', price:35, lvl:1, ny:1}
 };
+/* Winter items: in the shop from 17 November to 1 March, they stay with the child for ever */
+Object.assign(ITEMS, {
+  earmuffs:{slot:'head', name:'Earmuffs', col:'#ff9ec0', price:30, lvl:1, winter:1}, furhat:{slot:'head', name:'Fur hat', col:'#8a5a3a', price:40, lvl:1, winter:1},
+  goggles:{slot:'eyes', name:'Ski goggles', col:'#ff9f43', price:35, lvl:1, winter:1}, knitscarf:{slot:'neck', name:'Blue knit scarf', col:'#5aa9e6', price:25, lvl:1, winter:1},
+  wall_ice:{wall:'radial-gradient(circle at 20% 30%,#ffffffaa 0 6%,transparent 7%) 0 0/60px 60px,linear-gradient(#e6f3fd,#cfe6f8)', name:'Frosty wall', col:'#cfe6f8', price:25, lvl:1, winter:1},
+  rug_snow:{rug:'radial-gradient(#ffffff 0 52%,#eef5fc 53% 64%,#d7e7f6 65%)', name:'Snowy rug', col:'#d7e7f6', price:20, lvl:1, winter:1},
+  cocoa:{deco:'☕', spot:'shelf', name:'hot chocolate', price:15, lvl:1, winter:1}, flake:{deco:'❄️', spot:'wallR', name:'snowflake', price:15, lvl:1, winter:1},
+  mittens:{deco:'🧤', spot:'wallL', name:'gloves', price:20, lvl:1, winter:1}, skis:{deco:'🎿', spot:'floorL', name:'skis', price:35, lvl:1, winter:1},
+  penguin:{deco:'🐧', spot:'floorR', name:'penguin', price:40, lvl:1, winter:1}, skates:{deco:'⛸️', spot:'floorR2', name:'skates', price:30, lvl:1, winter:1}
+});
 const NY_ITEMS = Object.keys(ITEMS).filter(id => ITEMS[id].ny);
+const WINTER_ITEMS = Object.keys(ITEMS).filter(id => ITEMS[id].winter);
 /* where things stand in the room: left %, top %, size */
 const SPOTS = {shelf:[5,21,8], wallL:[3,40,9], wallR:[86,13,9], floorL:[1,57,13], floorR:[83,54,10], floorR2:[86,78,9]};
 const decoPic = d => d.startsWith('svg:') ? `<span class="pic">${SVGS[d.slice(4)]}</span>` : d;
@@ -846,8 +911,9 @@ function cueHTML(it){ return it.ru ? `<small>Find the word</small><b>${esc(it.ru
 /* ================= LANDING ================= */
 function landing(){
   P = null; A = null; DB.cur = null; save(); setChip('');
-  const ny = isNY(), chips = shuffle(ny ? ['snow','present','Happy New Year!','snowman','star','tree'] : ['hello!','ball','kite','cat','apple','pencil','happy','jump']).slice(0,3);
-  view(`${ny ? `<span class="nybadge" style="align-self:flex-start">🎄 Happy New Year! · New Year update</span>` : ''}<div class="tag">English words · Kid's Box 1 & 2</div>
+  const ny = isNY(), chips = shuffle(ny ? ['snow','present','Happy New Year!','snowman','star','tree'] : isWinterOnly() ? ['snow','winter','cold','snowman','gloves','ski'] : ['hello!','ball','kite','cat','apple','pencil','happy','jump']).slice(0,3);
+  const wi = isWinterOnly();
+  view(`${ny ? `<span class="nybadge" style="align-self:flex-start">🎄 Happy New Year! · New Year update</span>` : wi ? `<span class="nybadge" style="align-self:flex-start;color:#2f6f99">❄️ Winter update · new Snowball game!</span>` : ''}<div class="tag">English words · Kid's Box 1 & 2</div>
     <div class="h1">Learn words.<br>Look after a pet.</div>
     <p class="sub">Open the word pack from your teacher, choose a pet and play a little every day.</p>
     <div class="grid2">
@@ -862,8 +928,8 @@ function landing(){
       <span class="wchip" style="right:8%;top:10%;transform:rotate(5deg)">${chips[0]}</span>
       <span class="wchip" style="left:6%;top:44%;transform:rotate(-8deg)">${chips[1]}</span>
       <span class="wchip" style="right:6%;top:48%;transform:rotate(3deg)">${chips[2]}</span>
-      <div class="pets"><div>${petSVG('puppy',{mood:'joy', wear:ny ? {head:'antlers'} : {}})}</div><div>${petSVG('kitten',{mood:'joy', wear:ny ? {head:'santa', neck:'nyscarf'} : {}})}</div><div>${petSVG('iguana',{mood:'joy', wear:ny ? {head:'elfhat'} : {}})}</div></div>
-      ${ny ? SNOW : ''}
+      <div class="pets"><div>${petSVG('puppy',{mood:'joy', wear:ny ? {head:'antlers'} : wi ? {head:'earmuffs', neck:'knitscarf'} : {}})}</div><div>${petSVG('kitten',{mood:'joy', wear:ny ? {head:'santa', neck:'nyscarf'} : wi ? {head:'beanie', neck:'scarf'} : {}})}</div><div>${petSVG('iguana',{mood:'joy', wear:ny ? {head:'elfhat'} : wi ? {head:'furhat'} : {}})}</div></div>
+      ${isSnow() ? SNOW : ''}
     </div>
     ${storageOK ? '' : '<p class="note center">⚠️ Этот браузер не сохраняет прогресс (например, приватный режим).</p>'}
     ${AS_FILE && ON_PHONE ? '<div class="card" style="padding:12px 14px;background:#fff4d6"><p class="note" style="color:#7a4a12"><b>⚠️ Для родителей:</b> игра открыта как файл (например, из WhatsApp). На телефоне так прогресс может не сохраниться. Попросите у учителя <b>ссылку</b> на игру и открывайте её всегда по ссылке.</p></div>' : ''}`);
@@ -879,7 +945,7 @@ function kbPacks(book){
   if (!book){ const cur = P && packById(P.packId); book = cur ? (cur.builtin ? cur.book : 3) : 1; }
   const list = book === 3 ? [] : BUILTIN.filter(p => p.book === book);
   view(`<button class="back" id="bk">← Back</button><div class="h2">Choose a word pack</div>
-    <div class="row c">${[...(isNY() || book === 4 ? [[4,'❄️ New Year']] : []),[1,"Kid's Box 1"],[2,"Kid's Box 2"],...(DB.packs.length ? [[3,'My packs']] : [])].map(([b,t]) => `<button class="btn small ${b === book ? 'mint' : 'white'}" data-book="${b}">${t}</button>`).join('')}</div>
+    <div class="row c">${[...(isNY() || book === 4 ? [[4,'🎄 New Year']] : []),...(isSnow() || book === 5 ? [[5,'❄️ Winter']] : []),[1,"Kid's Box 1"],[2,"Kid's Box 2"],...(DB.packs.length ? [[3,'My packs']] : [])].map(([b,t]) => `<button class="btn small ${b === book ? 'mint' : 'white'}" data-book="${b}">${t}</button>`).join('')}</div>
     <div class="packs">${list.map(p => `<button class="pack card" data-id="${p.id}"><span class="pi">${p.ic}</span><span class="pt"><b>${esc(p.title)}</b><small>${p.words.filter(w => !w.ph).slice(0,6).map(w => esc(w.en)).join(', ')}…</small></span><span class="pill">${p.words.length}</span></button>`).join('')}
     ${book === 3 ? DB.packs.map(p => `<button class="pack card" data-id="${p.id}"><span class="pi" style="background:var(--mint)">📦</span><span class="pt"><b>${esc(p.title)}</b><small>${p.words.slice(0,6).map(w => esc(w.en)).join(', ')}</small></span><span class="pill">${p.words.length}</span></button>`).join('') : ''}</div>`);
   $('#bk').onclick = () => { sfx.click(); P ? home(P.id) : landing(); };
@@ -1002,7 +1068,7 @@ function roomHTML(){
   const wall = P.wall && ITEMS[P.wall] ? ITEMS[P.wall].wall : '';
   const decos = Object.entries(P.room || {}).filter(([sp,id]) => ITEMS[id] && SPOTS[sp]).map(([sp,id]) => { const [x,y,f] = SPOTS[sp]; return `<span class="deco" ${sayA(ITEMS[id].name)} style="left:${x}%;top:${y}%;font-size:${f}cqw">${decoPic(ITEMS[id].deco)}</span>`; }).join('');
   const rug = P.rug && ITEMS[P.rug] ? ` style="background:${ITEMS[P.rug].rug}"` : '';
-  return `<div class="wall" ${wall ? `style="background:${wall}"` : ''}></div><div class="rod"></div><div class="window"><i style="left:12%;height:16%"></i><i style="left:30%;height:24%"></i><i style="right:14%;height:20%"></i>${isNY() ? SNOW : ''}</div>
+  return `<div class="wall" ${wall ? `style="background:${wall}"` : ''}></div><div class="rod"></div><div class="window"><i style="left:12%;height:16%"></i><i style="left:30%;height:24%"></i><i style="right:14%;height:20%"></i>${isSnow() ? SNOW : ''}</div>
     <div class="curtain l"></div><div class="curtain r"></div><div class="shelf"></div><div class="floor"></div><div class="rug"${rug}></div>${decos}${isNY() ? garlandHTML() + (P.room.floorL === 'xtree' ? '' : `<span class="nytree" ${sayA('New Year tree')}>🎄</span>`) : ''}`;
 }
 function needLine(){
@@ -1026,7 +1092,7 @@ function renderHome(){
   A = null;
   const pct = P.xp / need(P.level);
   const nl = needLine(), it = pickItem();
-  const nyLine = isNY() && !nl && Math.random() < .5 ? rnd(['Happy New Year! 🎄',"It's snowing! ❄️",'I love presents! 🎁']) : null;
+  const nyLine = !nl && Math.random() < .5 ? (isNY() ? rnd(['Happy New Year! 🎄',"It's snowing! ❄️",'I love presents! 🎁']) : isWinterOnly() ? rnd(["Brrr! It's cold! 🥶",'I love snow! ❄️',"Let's make a snowman! ⛄"]) : null) : null;
   const bubble = nl || nyLine || `${it.en}${isEmoji(it) ? ' ' + it.pic : ''}`;
   const giftReady = isNY() && !(P.ny && P.ny.s === seasonId() && P.ny.days[todayStr()]);
   view(`<div class="homehead"><span class="lv">⭐ Level ${P.level}</span><div class="xp"><i style="width:${pct*100}%"></i></div><span class="pill">🪙 ${P.coins}</span><span class="pill">🔥 ${P.streak}</span></div>
@@ -1038,6 +1104,7 @@ function renderHome(){
     <div class="acts">
       ${[['feed','🍖','Feed','food'],['wash','🛁','Wash','clean'],['play','⚽','Play','fun'],['walk','🌳','Walk','walk']].map(([a,ic,lab,k]) => `<button class="act card" data-a="${a}"><span>${ic}</span>${lab}${P.stats[k] < 30 ? '<i class="dot">!</i>' : ''}</button>`).join('')}
     </div>
+    ${isSnow() ? `<div class="acts"><button class="act card wide" data-a="snow"><span>⛄</span><b>Snowball game</b><small>winter game</small></button></div>` : ''}
     <div class="acts small">
       <button class="act card" data-a="practice"><span>📝</span>Practice</button>
       <button class="act card" data-a="words"><span>📚</span>My words</button>
@@ -1045,7 +1112,7 @@ function renderHome(){
       <button class="act card" data-a="settings"><span>⚙️</span>Settings</button>
     </div>`);
   $('#pet').onclick = () => {
-    const w = pickItem(), line = rnd([`${w.en}!`, nl, `I love you, ${P.name}!`, `Hello, ${P.name}!`, ...(isNY() ? ['Happy New Year!', "It's snowing!", "Brrr! It's cold!"] : [])].filter(Boolean));
+    const w = pickItem(), line = rnd([`${w.en}!`, nl, `I love you, ${P.name}!`, `Hello, ${P.name}!`, ...(isNY() ? ['Happy New Year!', "It's snowing!", "Brrr! It's cold!"] : isWinterOnly() ? ["It's snowing!", "Brrr! It's cold!", "Let's play snowballs!"] : [])].filter(Boolean));
     $('#bub').textContent = line; say(line, true); sfx.squeak(); petAnim($('#pet'), 'jump');
   };
   $$('.act').forEach(b => b.onclick = () => { sfx.click(); goTo(b.dataset.a); });
@@ -1075,7 +1142,7 @@ function openPresent(){
     });
 }
 function goTo(a){
-  if (['feed','wash','play','walk','practice'].includes(a)) startAct(a);
+  if (['feed','wash','play','walk','practice','snow'].includes(a)) startAct(a);
   else if (a === 'words') myWords();
   else if (a === 'shop') shop();
   else if (a === 'settings') settings();
@@ -1088,7 +1155,7 @@ function daily(){
   const hr = new Date().getHours(), greet = hr < 12 ? 'Good morning' : hr < 18 ? 'Good afternoon' : 'Good evening';
   modal(`<div class="mp">${myPet({mood:'joy'})}</div><h2>${greet}, ${esc(P.name)}!</h2>${gap > 1 ? '<p>I missed you! 🥺</p>' : ''}
     <div class="rewards"><span>🔥 Day ${P.streak}</span><span>🎁 +${gift} 🪙</span></div>
-    ${isNY() ? `<p>🎄 Happy New Year! There's a present under the tree!</p>` : ''}
+    ${isNY() ? `<p>🎄 Happy New Year! There's a present under the tree!</p>` : isWinterOnly() ? `<p>❄️ It's winter! Try the new Snowball game!</p>` : ''}
     <p class="note">Play a little every day — your pet and your words will grow!</p><button class="btn" id="dOk" style="width:100%">Thank you! 💛</button>`,
     () => { say(`${greet}, ${P.name}!${gap > 1 ? ' I missed you!' : ''}${isNY() ? ' Happy New Year!' : ''}`, true); sfx.coin(); $('#dOk').onclick = () => { sfx.click(); closeModal(); renderHome(); }; });
 }
@@ -1098,7 +1165,8 @@ let A = null;
 const ACTS = {
   feed:    {n:6, stat:'food',  title:'Yummy!',          line:"I'm full! Thank you!"},
   walk:    {n:6, stat:'walk',  title:'What a walk!',    line:'That was a great walk!'},
-  play:    {n:6, stat:'fun',   title:'Good catch!',     line:'That was fun!'},
+  play:    {n:6, stat:'fun',   title:'Squishy fun!',    line:'Squish! That was fun!'},
+  snow:    {n:6, stat:'fun',   title:'Snowball champion!', line:'What a great snowball game!'},
   wash:    {n:3, stat:'clean', title:'Squeaky clean!',  line:"I'm clean! Thank you!"},
   practice:{n:8, stat:null,    title:'Great practice!', line:'You know your words!'}
 };
@@ -1112,7 +1180,7 @@ function topHTML(){ return `<div class="acttop"><button class="back" id="leave">
 function round(){
   clearTimers(); if (window.speechSynthesis) speechSynthesis.cancel();
   A.missed = false; A.locked = false;
-  ({feed:feedRound, walk:walkRound, play:playRound, wash:washRound, practice:practiceRound})[A.kind]();
+  ({feed:feedRound, walk:walkRound, play:playRound, wash:washRound, practice:practiceRound, snow:snowRound})[A.kind]();
   $('#leave').onclick = () => { sfx.click(); renderHome(); };
   window.scrollTo(0,0);
 }
@@ -1134,6 +1202,7 @@ function finish(){
   if (cfg.stat) P.stats[cfg.stat] = clamp(P.stats[cfg.stat] + 40 + 60*score/n, 0, 100);
   else NEEDS.forEach(([s]) => P.stats[s] = clamp(P.stats[s] + 8, 0, 100));
   if (k === 'walk') P.stats.fun = clamp(P.stats.fun + 10, 0, 100);
+  if (k === 'snow') P.stats.walk = clamp(P.stats.walk + 15, 0, 100);
   if (k === 'play' || k === 'walk') P.stats.food = clamp(P.stats.food - 5, 0, 100);
   P.coins += coins; P.last = Date.now();
   const seen = new Set(), miss = A.results.filter(r => !r.ok && !seen.has(r.it.en) && seen.add(r.it.en)).map(r => r.it);
@@ -1197,7 +1266,7 @@ function feedRound(){
 
 /* ---- WALK: choose the word, the pet walks along the path ---- */
 function gardenHTML(){
-  return `${isNY() ? SNOW : ''}<div class="tree" style="left:-6%;top:4%;width:30%"></div><div class="tree" style="right:-8%;top:0;width:34%"></div>
+  return `${isSnow() ? SNOW : ''}<div class="tree" style="left:-6%;top:4%;width:30%"></div><div class="tree" style="right:-8%;top:0;width:34%"></div>
     <div class="fence"></div><span class="flower" style="left:8%;top:44%">🌷</span><span class="flower" style="left:86%;top:46%">🌼</span>
     <div class="path"></div><span class="flower" style="left:6%;bottom:2%">🌼</span><span class="flower" style="left:40%;bottom:3%">🌸</span><span class="flower" style="right:10%;bottom:1%">🌷</span><span class="goal">🏡</span>`;
 }
@@ -1233,31 +1302,107 @@ function fitWalk(){
   if (need > sc.clientHeight){ sc.style.aspectRatio = 'auto'; sc.style.height = need + 'px'; }
 }
 /* ---- PLAY: listen and choose the picture, the pet catches the ball ---- */
+/* ---- PLAY: squishy time — listen, then squish the right squishy toy ---- */
+const SQ_COLS = ['#ffd1dc','#cdeee0','#e5d6f6','#fde7a5','#cfe9f6','#fbd6c0'];
+const SQ_FACE = `<svg viewBox="0 0 40 18"><circle cx="11" cy="6" r="2.6" fill="#4b3536"/><circle cx="29" cy="6" r="2.6" fill="#4b3536"/><path d="M16 9Q20 13 24 9" stroke="#4b3536" stroke-width="2" fill="none" stroke-linecap="round"/><ellipse cx="6" cy="11" rx="3.6" ry="2.2" fill="#ff8fb1" opacity=".7"/><ellipse cx="34" cy="11" rx="3.6" ry="2.2" fill="#ff8fb1" opacity=".7"/></svg>`;
+function squishSound(){ tone(260,.12,.07,0,'triangle'); tone(170,.16,.06,.05,'triangle'); }
 function playRound(){
   const it = pickItem(x => hasPic(x) && !x.ph, A.used);
   const opts = shuffle([it, ...distractors(it, 3, x => hasPic(x) && x.pic !== it.pic)]);
+  const cols = shuffle(SQ_COLS);
   main.innerHTML = `<div class="view">${topHTML()}
-    <div class="scene yard" id="sc">${isNY() ? SNOW : ''}<div class="tree" style="left:-8%;top:-6%;width:28%"></div><div class="tree" style="right:-10%;top:-8%;width:26%"></div>
-      <div class="prompt"><small>Listen and choose the picture</small><button class="listen" id="hear">🔊</button></div>
-      <div class="picopts">${opts.map((o,i) => `<button class="picopt" data-i="${i}">${picHTML(o)}</button>`).join('')}</div>
+    <div class="scene playmat" id="sc"><div class="mat"></div>
+      <div class="prompt"><small>Listen and squish the right squishy!</small><button class="listen" id="hear">🔊</button></div>
+      <div class="squishes">${opts.map((o,i) => `<button class="sq" data-i="${i}" style="--c:${cols[i]}"><span class="blob"></span><span class="spic">${picHTML(o)}</span><span class="face">${SQ_FACE}</span></button>`).join('')}</div>
       <div class="petbox" id="pet">${myPet()}</div>
-    </div><div class="fb" id="fb"></div></div>`;
+    </div><div class="fb" id="fb">Press and hold a squishy… then let go! 🫧</div></div>`;
   $('#hear').onclick = () => say(it.en); later(() => say(it.en), 350);
-  $$('.picopt').forEach(b => b.onclick = () => {
-    const o = opts[+b.dataset.i];
-    if (answer(o === it, it)){
-      b.classList.add('right');
-      const ball = document.createElement('span'); ball.textContent = '⚽'; ball.style.cssText = 'position:fixed;font-size:34px;line-height:1';
-      const r = b.getBoundingClientRect(); ball.style.left = (r.left + r.width/2 - 17) + 'px'; ball.style.top = (r.top + r.height/2 - 17) + 'px';
-      document.body.appendChild(ball); flyTo(ball, $('#pet'), 650); ball.remove();
-      setTimeout(() => { if ($('#pet')){ $('#pet').innerHTML = myPet({mood:'joy'}); petAnim($('#pet'), 'jump'); sfx.squeak(); } }, 620);
-      say(it.en); $('#fb').className = 'fb ok'; $('#fb').textContent = `✔ ${it.en}${it.ru ? ' — ' + it.ru : ''}`;
-      nextRound(1800);
-    } else if (!A.locked){
-      b.classList.add('wrong'); anim(b, 'shake');
-      $('#fb').className = 'fb bad'; $('#fb').textContent = `This is “${o.en}”. Listen again!`; later(() => say(it.en), 700);
-    }
+  $$('.sq').forEach(b => {
+    const release = () => { if (!b.classList.contains('press')) return; b.classList.remove('press'); b.classList.remove('slow'); void b.offsetWidth; b.classList.add('slow'); tone(1300,.05,.03); };
+    b.addEventListener('pointerdown', () => { b.classList.remove('slow'); b.classList.add('press'); squishSound(); });
+    b.addEventListener('pointerup', release); b.addEventListener('pointerleave', release); b.addEventListener('pointercancel', release);
+    b.onclick = () => {
+      const o = opts[+b.dataset.i];
+      const fx = document.createElement('span'); fx.className = 'squishfx'; fx.textContent = 'squish!';
+      fx.style.left = (b.offsetLeft + b.offsetWidth*.3 + $('.squishes').offsetLeft) + 'px'; fx.style.top = (b.offsetTop + $('.squishes').offsetTop) + 'px';
+      $('#sc').appendChild(fx); setTimeout(() => fx.remove(), 1000);
+      if (answer(o === it, it)){
+        b.classList.add('right');
+        setTimeout(() => { if (!$('#pet')) return; flyTo(b, $('#pet'), 700); b.style.visibility = 'hidden'; }, 450);
+        setTimeout(() => { if ($('#pet')){ $('#pet').innerHTML = myPet({mood:'joy'}); petAnim($('#pet'), 'squish', 1400); squishSound(); sfx.squeak(); } }, 1150);
+        say(`Squish! ${it.en}!`); $('#fb').className = 'fb ok'; $('#fb').textContent = `✔ ${it.en}${it.ru ? ' — ' + it.ru : ''}`;
+        nextRound(2300);
+      } else if (!A.locked){
+        setTimeout(() => b.classList.add('wrong'), 600);
+        $('#fb').className = 'fb bad'; $('#fb').textContent = `This is “${o.en}”. Listen again!`; later(() => say(it.en), 800);
+      }
+    };
   });
+}
+
+/* ---- WINTER: snowball game — hit the snowman with the right word ---- */
+const HOLES = [[18,31],[50,27],[82,31],[27,56],[73,56]];   /* the pet stands in the middle at the bottom */
+const HATS = ['#e74c3c','#3d8be8','#4cb963','#9b7be0','#f39c34','#ff7aa8'];
+const snowmanSVG = hat => `<svg viewBox="0 0 100 120"><circle cx="50" cy="88" r="30" fill="#fff" stroke="#4b3536" stroke-width="3"/><circle cx="50" cy="40" r="22" fill="#fff" stroke="#4b3536" stroke-width="3"/>
+  <circle cx="42" cy="36" r="3" fill="#2b2b2b"/><circle cx="58" cy="36" r="3" fill="#2b2b2b"/><path d="M50 42L68 46L50 48Z" fill="#f39c34" stroke="#4b3536" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M42 52Q50 57 58 52" stroke="#2b2b2b" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M28 20H72" stroke="#4b3536" stroke-width="4" stroke-linecap="round"/><rect x="34" y="0" width="32" height="20" rx="3" fill="${hat}" stroke="#4b3536" stroke-width="3"/></svg>`;
+function snowRound(){
+  const pool = x => !x.ph && x.en.length <= 12;
+  const it = pickItem(pool, A.used), opts = shuffle([it, ...distractors(it, 3, pool)]);
+  const usePic = hasPic(it) && Math.random() < .5;
+  A.on = true; A.since = 0; A.it = it;
+  main.innerHTML = `<div class="view">${topHTML()}
+    <div class="scene snowfield" id="sc">${SNOW}
+      <div class="hill" style="left:-20%;width:70%;top:16%;height:30%"></div><div class="hill" style="right:-25%;width:80%;top:14%;height:34%"></div>
+      <div class="prompt">${usePic ? `<small>Hit the snowman with this word!</small><span class="pp">${picHTML(it)}</span>` : `<small>Hit the snowman with the word</small><b>${esc(it.ru || it.en)}</b>`}</div>
+      ${HOLES.map(([x,y],i) => `<div class="hole" data-h="${i}" style="left:${x}%;top:${y}%"><div class="sm">${snowmanSVG(HATS[i])}<div class="sign"></div></div></div>`).join('')}
+      <div class="petbox" id="pet">${myPet({wear:Object.assign({}, P.wear, P.wear.head ? {} : {head:'beanie'})})}</div>
+    </div><div class="fb" id="fb">Tap the snowman to throw a snowball! ❄️</div></div>`;
+  const holes = $$('.hole');
+  const pop = () => {
+    if (!A || !A.on || !$('#sc')) return;
+    const free = holes.filter(h => !h.classList.contains('up') && !h.classList.contains('hit'));
+    if (!free.length) return;
+    const upWords = holes.filter(h => h.classList.contains('up')).map(h => h.dataset.w);
+    const wantTarget = !upWords.includes(it.en) && (A.since >= 1 || Math.random() < .5);
+    const choices = opts.filter(o => o !== it && !upWords.includes(o.en));
+    const o = wantTarget || !choices.length ? it : rnd(choices);
+    if (o === it) A.since = 0; else A.since++;
+    const h = rnd(free), sign = h.querySelector('.sign');
+    h.dataset.w = o.en; sign.textContent = o.en; sign.style.cssText = fontFor(o.en, 4.6);
+    h.classList.add('up');
+    later(() => { if (h.classList.contains('up') && !h.classList.contains('hit')) h.classList.remove('up'); }, 2600 + Math.random()*600);
+  };
+  later(pop, 300); later(pop, 900);
+  every(pop, 1000);
+  holes.forEach(h => h.onclick = () => {
+    if (!A || !A.on || !h.classList.contains('up')) return;
+    const o = opts.find(x => x.en === h.dataset.w); if (!o) return;
+    throwSnowball(h);
+    setTimeout(() => {
+      if (!A || !A.on || !$('#sc')) return;
+      const sp = document.createElement('span'); sp.className = 'splat'; sp.textContent = '💥';
+      sp.style.left = h.style.left; sp.style.top = `calc(${h.style.top} + 6%)`; sp.style.transform = 'translateX(-50%)'; $('#sc').appendChild(sp); setTimeout(() => sp.remove(), 800);
+      if (answer(o === it, it)){
+        A.on = false; h.classList.add('hit'); tone(180,.12,.06,0,'triangle');
+        holes.forEach(x => { if (x !== h) x.classList.remove('up'); });
+        if ($('#pet')){ $('#pet').innerHTML = myPet({mood:'joy', wear:Object.assign({}, P.wear, P.wear.head ? {} : {head:'beanie'})}); petAnim($('#pet'), 'jump'); }
+        say(it.en); $('#fb').className = 'fb ok'; $('#fb').textContent = `✔ ${it.en}${it.ru ? ' — ' + it.ru : ''}`;
+        nextRound(1700);
+      } else if (!A.locked){
+        h.classList.remove('nope'); void h.offsetWidth; h.classList.add('nope');
+        say(o.en); $('#fb').className = 'fb bad'; $('#fb').textContent = `Ha-ha! That's “${o.en}”${o.ru ? ' — ' + o.ru : ''}. Try again!`;
+      }
+    }, 380);
+  });
+}
+function throwSnowball(target){
+  const from = $('#pet'), a = from.getBoundingClientRect(), b = target.getBoundingClientRect();
+  const ball = document.createElement('div'); ball.className = 'snowball';
+  const x0 = a.left + a.width/2 - 13, y0 = a.top + a.height*.3, x1 = b.left + b.width/2 - 13, y1 = b.top + b.height*.45;
+  Object.assign(ball.style, {left:x0 + 'px', top:y0 + 'px'}); document.body.appendChild(ball);
+  tone(600,.08,.03); 
+  ball.animate([{transform:'translate(0,0) scale(1)'},{transform:`translate(${(x1-x0)*.5}px,${(y1-y0)*.5 - 60}px) scale(.85)`, offset:.5},{transform:`translate(${x1-x0}px,${y1-y0}px) scale(.6)`}], {duration:380, easing:'ease-out'}).onfinish = () => ball.remove();
 }
 
 /* ---- WASH: pop the letter bubbles in the right order ---- */
@@ -1383,18 +1528,21 @@ function shop(tab = 'pet'){
   const groups = tab === 'pet'
     ? [['🎩 Hats', it => it.slot === 'head'], ['👓 Glasses', it => it.slot === 'eyes'], ['🧣 Necklaces', it => it.slot === 'neck'], ['🦋 Wings & capes', it => it.slot === 'back']]
     : [['🎨 Walls', it => it.wall], ['🟣 Rugs', it => it.rug], ['📚 On the shelf', it => it.spot === 'shelf'], ['🖼️ On the wall', it => it.spot === 'wallL' || it.spot === 'wallR'], ['🧸 On the floor', it => /^floor/.test(it.spot || '')]];
-  const nyOwned = NY_ITEMS.some(id => P.owned.includes(id));
-  if (isNY() || nyOwned) groups.unshift(['❄️ New Year', it => tab === 'pet' ? !!it.slot : !it.slot]);
+  const nyOwned = NY_ITEMS.some(id => P.owned.includes(id)), wOwned = WINTER_ITEMS.some(id => P.owned.includes(id));
+  if (isSnow() || wOwned) groups.unshift(['❄️ Winter', it => tab === 'pet' ? !!it.slot : !it.slot, 'winter']);
+  if (isNY() || nyOwned) groups.unshift(['🎄 New Year', it => tab === 'pet' ? !!it.slot : !it.slot, 'ny']);
+  const tagOf = it => it.ny ? 'ny' : it.winter ? 'winter' : undefined;
+  const avail = it => it.ny ? isNY() : it.winter ? isSnow() : true;
   const isOn = (id, it) => it.slot ? P.wear[it.slot] === id : it.wall ? P.wall === id : it.rug ? P.rug === id : P.room[it.spot] === id;
   const card = ([id,it]) => {
-    const own = P.owned.includes(id), off = it.ny && !isNY(), lock = P.level < it.lvl || off, on = isOn(id, it);
-    return `<button class="item card ${on ? 'on' : ''} ${lock && !own ? 'locked' : ''}" data-id="${id}"><div class="ii">${itemIcon(id)}</div><b>${esc(it.name)}</b><small>${own ? (on ? '✔ On' : 'Use') : off ? '❄️ 14 Dec' : lock ? `🔒 Level ${it.lvl}` : `🪙 ${it.price}`}</small></button>`;
+    const own = P.owned.includes(id), off = !avail(it), lock = P.level < it.lvl || off, on = isOn(id, it);
+    return `<button class="item card ${on ? 'on' : ''} ${lock && !own ? 'locked' : ''}" data-id="${id}"><div class="ii">${itemIcon(id)}</div><b>${esc(it.name)}</b><small>${own ? (on ? '✔ On' : 'Use') : off ? (it.ny ? '🎄 14 Dec' : '❄️ 17 Nov') : lock ? `🔒 Level ${it.lvl}` : `🪙 ${it.price}`}</small></button>`;
   };
   view(`<button class="back" id="bk">← Home</button><div class="h2">Shop</div><p class="sub center">🪙 ${P.coins} · get coins in the word games!</p>
     <div class="row c"><button class="btn small ${tab === 'pet' ? 'mint' : 'white'}" data-t="pet">For ${esc(P.pet.name)}</button><button class="btn small ${tab === 'room' ? 'mint' : 'white'}" data-t="room">For the room</button></div>
     ${tab === 'pet' ? `<div class="row c"><div style="width:150px">${myPet({mood:'joy'})}</div></div>`
       : `<div class="scene room" style="width:min(100%,300px);align-self:center">${roomHTML()}<div class="petbox">${myPet()}</div></div><p class="note center">Tap the things in the room — ${esc(P.pet.name)} says the English word!</p>`}
-    <div class="items">${groups.map(([t,f]) => `<div class="ihead">${t}</div>` + Object.entries(ITEMS).filter(([id,it]) => !!it.ny === t.startsWith('❄️') && f(it) && (!it.ny || isNY() || P.owned.includes(id))).map(card).join('')).join('')}</div>`);
+    <div class="items">${groups.map(([t,f,tag]) => { const list = Object.entries(ITEMS).filter(([id,it]) => tagOf(it) === tag && f(it) && (avail(it) || P.owned.includes(id))); return list.length ? `<div class="ihead">${t}</div>` + list.map(card).join('') : ''; }).join('')}</div>`);
   $('#bk').onclick = () => { sfx.click(); renderHome(); };
   $$('[data-t]').forEach(b => b.onclick = () => { sfx.click(); shop(b.dataset.t); });
   $$('.item').forEach(b => b.onclick = () => {
@@ -1407,7 +1555,8 @@ function shop(tab = 'pet'){
       else { if (P.room[it.spot] === id) delete P.room[it.spot]; else P.room[it.spot] = id; }
       save(); sfx.squeak(); shop(tab); window.scrollTo(0, y); return;
     }
-    if (it.ny && !isNY()){ sfx.bad(); toast('❄️ New Year things: 14 December – 14 January'); return; }
+    if (it.ny && !isNY()){ sfx.bad(); toast('🎄 New Year things: 14 December – 14 January'); return; }
+    if (it.winter && !isSnow()){ sfx.bad(); toast('❄️ Winter things: 17 November – 1 March'); return; }
     if (P.level < it.lvl){ sfx.bad(); toast(`🔒 Level ${it.lvl}`); return; }
     if (P.coins < it.price){ sfx.bad(); toast(`You need ${it.price - P.coins} more 🪙`); return; }
     P.coins -= it.price; P.owned.push(id);
@@ -1427,8 +1576,9 @@ function settings(){
       <button class="btn white" id="sPet">🐾 Change my pet</button>
       <button class="btn white" id="sPack">📦 Change word pack</button>
       <button class="btn white" id="sOut">👥 Change player</button>
-      <div class="studio" style="text-align:left"><label>❄️ Новогодняя тема</label>
-        <div class="row"><button class="btn small white" data-ny="auto">Авто (14.12–14.01)</button><button class="btn small white" data-ny="on">Вкл</button><button class="btn small white" data-ny="off">Выкл</button></div></div>
+      <div class="studio" style="text-align:left"><label>❄️ Сезонная тема</label>
+        <div class="row"><button class="btn small white" data-ny="auto">Авто</button><button class="btn small white" data-ny="winter">Зима</button><button class="btn small white" data-ny="ny">Новый год</button><button class="btn small white" data-ny="off">Выкл</button></div>
+        <p class="note">Авто: зима с 17.11 до 01.03, Новый год с 14.12 до 14.01.</p></div>
       <div class="studio" style="text-align:left"><label>🔊 Голос</label><select class="in" id="sVoice"></select>
         <div class="row" style="margin-top:8px"><button class="btn small white" data-rate=".7">🐢 Медленно</button><button class="btn small white" data-rate=".85">Обычно</button><button class="btn small" id="sTest">▶ Послушать</button></div>
         <p class="note" id="sVnote" style="margin-top:6px"></p></div>
@@ -1442,9 +1592,9 @@ function settings(){
       $('#sPack').onclick = () => { closeModal(); kbPacks(); };
       $('#sOut').onclick = () => { closeModal(); landing(); };
       $('#sCopy').onclick = () => copyText($('#sCode').value);
-      const nyBtns = () => $$('[data-ny]').forEach(b => b.classList.toggle('mint', (DB.nyMode || 'auto') === b.dataset.ny));
+      const nyBtns = () => $$('[data-ny]').forEach(b => b.classList.toggle('mint', seasonMode() === b.dataset.ny));
       nyBtns();
-      $$('[data-ny]').forEach(b => b.onclick = () => { DB.nyMode = b.dataset.ny; save(); applySeason(); nyBtns(); renderHome(); sfx.click(); });
+      $$('[data-ny]').forEach(b => b.onclick = () => { DB.season = b.dataset.ny; delete DB.nyMode; save(); applySeason(); nyBtns(); renderHome(); sfx.click(); });
       const fillVoices = () => {
         loadVoices(); const cur = mainVoice(), nice = VOICES.filter(isNice).length;
         $('#sVoice').innerHTML = VOICES.length ? VOICES.map(v => `<option value="${esc(v.name)}" ${cur && v.name === cur.name ? 'selected' : ''}>${isNice(v) ? '⭐ ' : ''}${esc(v.name.replace(/^Microsoft /,'').replace(/ - English.*$/,''))} (${esc(v.lang)})</option>`).join('') : '<option>Голос браузера</option>';
@@ -1561,7 +1711,7 @@ $('#fileImg').onchange = e => {
 
 /* ================= START ================= */
 load(); applyZoom(); applySeason();
-setInterval(() => { const was = document.body.classList.contains('ny'); applySeason(); if (was !== isNY() && P && !A) renderHome(); }, 3600000);
+setInterval(() => { const was = document.body.className; applySeason(); if (was !== document.body.className && P && !A) renderHome(); }, 3600000);
 DB.players.forEach(fixPlayer);
 if (DB.music) musicOn(true);
 (function start(){
