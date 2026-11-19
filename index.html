@@ -125,8 +125,9 @@ svg.pet{display:block;width:100%;height:auto;overflow:visible}
 .room .floor{position:absolute;inset:62% 0 0 0;background:repeating-linear-gradient(90deg,#efc89c 0 16%,#e9bf90 16% 32%)}
 .room .rug{position:absolute;left:10%;right:10%;top:70%;height:24%;border-radius:50%;background:radial-gradient(#f3c3b5 0 52%,#f7d6cc 53% 64%,#efb3a2 65%)}
 .room .shelf{position:absolute;left:3%;top:30%;width:18%;height:2cqw;background:#c48e60;border-radius:1cqw}
-.room .deco{position:absolute;font-size:8cqw;line-height:1;cursor:pointer;z-index:2}
-.room .deco .pic svg{width:1em;height:1.2em}
+.room .deco{position:absolute;transform:translate(-50%,-100%);line-height:0;cursor:pointer;z-index:2;filter:drop-shadow(0 .5cqw 0 rgba(75,53,54,.18))}
+.room .deco svg{display:block;width:100%;height:auto;overflow:visible}
+.tb{animation:blink 1.6s ease-in-out infinite}
 .ihead{grid-column:1/-1;font-weight:900;font-size:15px;margin-top:6px}
 .scene>.petbox{position:absolute;left:50%;bottom:9%;width:46%;transform:translateX(-50%)}
 .scene .bubble{position:absolute;left:50%;top:5%;transform:translateX(-50%);max-width:76%;padding:2cqw 4cqw;border-radius:5cqw;background:#fff;border:2.5px solid var(--line);box-shadow:0 3px 0 var(--line);font-weight:900;font-size:clamp(15px,4.6cqw,21px);text-align:center;z-index:5;cursor:pointer;white-space:nowrap}
@@ -291,13 +292,17 @@ body.snow{background-color:#dfe9f5;background-image:radial-gradient(#fff 2.2px,t
 .snow .garden .path{background:#e3ecf7;border-color:#c5d5e8}
 .snow .room .window{background:linear-gradient(#b9d3ec,#e3eefa 55%,#fff 56%,#eef4fb)}
 .snow .room .window i{background:#fff;box-shadow:0 0 0 .4cqw #dfe8f2}
-.garland{position:absolute;left:0;right:0;top:0;height:12%;z-index:2;pointer-events:none}
-.garland svg{width:100%;height:100%}
-.garland .b{animation:blink 1.6s ease-in-out infinite}
-.garland .b:nth-child(3n){animation-delay:.5s} .garland .b:nth-child(3n+1){animation-delay:1s}
+.garland{position:absolute;left:13%;right:13%;top:3.4%;z-index:2;pointer-events:none;line-height:0}
+.garland svg{display:block;width:100%;height:auto;overflow:visible}
+.garland .glow{opacity:.15;animation:glow 1.65s ease-in-out infinite}
+@keyframes glow{50%{opacity:.6}}
+@media (prefers-reduced-motion:reduce){.garland .glow{animation:none;opacity:.35}}
 @keyframes blink{50%{opacity:.35}}
-.nytree{position:absolute;left:8%;top:34%;font-size:21cqw;line-height:1;z-index:2;cursor:pointer;filter:drop-shadow(0 .8cqw 0 rgba(75,53,54,.25))}
-.nygift{position:absolute;left:20%;top:60%;font-size:10cqw;line-height:1;z-index:6;animation:wiggle 1.2s ease-in-out infinite}
+.nytree{position:absolute;left:23%;top:73%;width:23%;transform:translate(-50%,-100%);line-height:0;z-index:1;cursor:pointer;filter:drop-shadow(0 .8cqw 0 rgba(75,53,54,.22))}
+.nytree svg{display:block;width:100%;height:auto}
+.nygift{position:absolute;left:31%;top:78%;width:12%;transform:translate(-50%,-100%);line-height:0;z-index:6}
+.nygift span{display:block;animation:wiggle 1.2s ease-in-out infinite;transform-origin:50% 100%}
+.nygift svg{display:block;width:100%;height:auto}
 .nygift::after{content:'';position:absolute;inset:-12%;border-radius:50%;box-shadow:0 0 0 .6cqw rgba(255,215,90,.7);animation:ring 1.2s ease-out infinite}
 @keyframes wiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg)}40%{transform:rotate(10deg)}60%{transform:rotate(-6deg)}}
 @keyframes ring{from{transform:scale(.7);opacity:1}to{transform:scale(1.5);opacity:0}}
@@ -340,6 +345,50 @@ body.snow{background-color:#dfe9f5;background-image:radial-gradient(#fff 2.2px,t
 .act.wide{grid-column:1/-1;flex-direction:row;justify-content:center;gap:10px;font-size:16px;padding:10px;background:linear-gradient(90deg,#e3f0fb,#f6fbff)}
 .act.wide span{font-size:28px}
 .act.wide small{font-weight:700;font-size:12px;color:#5c7a96}
+
+/* ---------- town ---------- */
+.map{position:relative;width:100%;aspect-ratio:1/1.15;border:2.5px solid var(--line);border-radius:26px;overflow:hidden;container-type:inline-size;background:#bfe3a0}
+.map .ground{position:absolute;inset:0;width:100%;height:100%}
+.snow .map{--grass:#f4f8ff;--tree:#cfe3ee;--road:#e3d3bd;--road2:#c9b49a;--pond:#cfe8f5;background:#f4f8ff}
+.house{position:absolute;width:24%;transform:translate(-50%,-100%);z-index:2;line-height:0;filter:drop-shadow(0 .8cqw 0 rgba(75,53,54,.2));transition:transform .15s}
+.house:active{transform:translate(-50%,-100%) scale(.94)}
+.house svg{display:block;width:100%;height:auto}
+.house .hl{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:.6cqw;white-space:nowrap;padding:.8cqw 2.4cqw;border-radius:99px;background:#fff;border:2px solid var(--line);font-weight:900;font-size:clamp(11px,3.3cqw,15px);line-height:1.15}
+.house .hl small{font-size:.82em;color:#e0567a;letter-spacing:-.05em}
+.house.locked svg{filter:grayscale(.85) opacity(.75)}
+.mapPet{position:absolute;width:13%;transform:translate(-50%,-100%);z-index:4;transition:left .85s ease-in-out,top .85s ease-in-out;pointer-events:none}
+.scene.inside{aspect-ratio:1/.8}
+.inside .nb{position:absolute;left:30%;bottom:4%;width:42%;transform:translateX(-50%)}
+.inside .mini{position:absolute;right:6%;bottom:4%;width:26%}
+.scene.inside .bubble,.scene.hide .bubble{max-width:90%;width:max-content;white-space:normal;cursor:pointer;line-height:1.2}
+.house{width:27%}
+.fbars{padding:10px 14px;display:flex;flex-direction:column;gap:7px}
+.fbar{display:grid;grid-template-columns:1fr 1.2fr;gap:10px;align-items:center;font-weight:900;font-size:14px}
+.fbar span small{display:block;font-weight:700;font-size:11px;color:#8a7274}
+.fbar .bar{height:14px;border-radius:9px;background:#ece2d6;border:2px solid var(--line);overflow:hidden}
+.fbar .bar i{display:block;height:100%;transition:width .6s}
+.fbar.done span::after{content:' ✔';color:var(--ok)}
+.choices{display:flex;flex-direction:column;gap:9px}
+.choice{padding:13px 14px;border-radius:16px;background:var(--paper);border:2.5px solid var(--line);box-shadow:0 4px 0 var(--line);font-weight:900;font-size:17px;text-align:left}
+.choice:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.choice.wrong{opacity:.45}
+.giftgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.gift{display:flex;flex-direction:column;align-items:center;padding:8px 4px 6px;font-weight:900;font-size:14px;line-height:1.1}
+.gift svg{width:78%;height:auto}
+.gift:disabled{opacity:.5}
+.ttt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:min(100%,330px);margin:0 auto;aspect-ratio:1}
+.ttt button{border-radius:16px;background:var(--paper);border:2.5px solid var(--line);box-shadow:0 4px 0 var(--line);padding:8%;line-height:0}
+.ttt button svg{width:100%;height:100%;animation:pop .35s}
+.ttt button.x{color:#e0567a} .ttt button.o{color:#3d8be8} .ttt button.win{background:#fff2a8}
+.mem{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mem button{aspect-ratio:3/4;border-radius:14px;border:2.5px solid var(--line);box-shadow:0 4px 0 var(--line);background:repeating-linear-gradient(45deg,#ffd6e0 0 10px,#ffe7ee 10px 20px);display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;overflow:hidden;padding:4px}
+.mem button .w{font-size:clamp(13px,4vw,18px);word-break:break-word;line-height:1.1}
+.mem button>*:not(.w){font-size:44px;line-height:1}
+.mem button img,.mem button svg{width:90%;height:auto}
+.mem button.open{background:var(--paper)} .mem button.done{background:#dff3e5;opacity:.8}
+.scene.hide{aspect-ratio:1/.9}
+.hide .spot{position:absolute;transform:translate(-50%,-100%);line-height:0}
+.hide .spot svg{display:block;width:100%;height:auto}
 </style>
 </head>
 <body>
@@ -467,9 +516,25 @@ const seasonId = (d = new Date()) => String(d.getMonth() === 0 ? d.getFullYear()
 function applySeason(){ document.body.classList.toggle('ny', isNY()); document.body.classList.toggle('snow', isSnow()); }
 const SNOW = '<div class="snowfx"></div>';
 function garlandHTML(){
-  const cols = ['#ff5c5c','#ffd23f','#4cb963','#5aa9e6','#ff7aa8','#9b7be0'];
-  const bulbs = Array.from({length:15}, (_,i) => { const x = 3 + i*6.7, y = 16 + (i % 2 ? 10 : 4) + Math.abs(7 - i)*1.2; return `<g class="b"><rect x="${x-1.2}" y="${y-5}" width="2.4" height="3" fill="#4b3536"/><ellipse cx="${x}" cy="${y+2}" rx="2.4" ry="3.6" fill="${cols[i % cols.length]}" stroke="#4b3536" stroke-width=".6"/></g>`; }).join('');
-  return `<div class="garland"><svg viewBox="0 0 100 50" preserveAspectRatio="none"><path d="M0 18Q12 34 25 22T50 28T75 22T100 18" stroke="#3e7d4a" stroke-width="1.2" fill="none"/>${bulbs}</svg></div>`;
+  /* hangs from the curtain rod in 3 soft loops; every bulb sits right on the wire */
+  const cols = ['#ff4d4d','#ffd23f','#3fbf5f','#4aa3ff','#ff6fb5'];
+  let wire = 'M0 3', bulbs = '', n = 0;
+  for (let s = 0; s < 3; s++){
+    const x0 = s*100, cx = x0 + 50, cy = 50;
+    wire += ` Q${cx} ${cy} ${x0+100} 3`;
+    [.14,.32,.5,.68,.86].forEach(t => {
+      const x = (1-t)*(1-t)*x0 + 2*(1-t)*t*cx + t*t*(x0+100), y = (1-t)*(1-t)*3 + 2*(1-t)*t*cy + t*t*3;
+      const c = cols[n % cols.length];
+      bulbs += `<g><circle class="glow" cx="${x.toFixed(1)}" cy="${(y+10).toFixed(1)}" r="10" fill="${c}" style="animation-delay:${(n%3)*.55}s"/>
+        <rect x="${(x-3).toFixed(1)}" y="${(y-1).toFixed(1)}" width="6" height="5.5" rx="1.2" fill="#3c4a3f"/>
+        <path d="M${(x-4.6).toFixed(1)} ${(y+5).toFixed(1)}Q${(x-5.6).toFixed(1)} ${(y+16).toFixed(1)} ${x.toFixed(1)} ${(y+19).toFixed(1)}Q${(x+5.6).toFixed(1)} ${(y+16).toFixed(1)} ${(x+4.6).toFixed(1)} ${(y+5).toFixed(1)}Z" fill="${c}" stroke="#4b3536" stroke-width="1.4"/>
+        <ellipse cx="${(x-1.6).toFixed(1)}" cy="${(y+9).toFixed(1)}" rx="1.3" ry="2.6" fill="#fff" opacity=".75"/></g>`;
+      n++;
+    });
+  }
+  return `<div class="garland"><svg viewBox="-6 -2 312 52" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+    <path d="${wire}" stroke="#2c5e3a" stroke-width="2.2" fill="none" stroke-linecap="round"/>${bulbs}
+    <circle cx="0" cy="3" r="3.4" fill="#9b6a4a" stroke="#4b3536" stroke-width="1.2"/><circle cx="300" cy="3" r="3.4" fill="#9b6a4a" stroke="#4b3536" stroke-width="1.2"/></svg></div>`;
 }
 
 /* ================= PICTURES ================= */
@@ -615,7 +680,7 @@ const ALL_WORDS = [...ALL_KB, ...ALL_KB2.filter(w => !ALL_KB.some(x => x.en === 
 const KEY = 'myPetPal.v2';
 let DB = {v:2, players:[], cur:null, packs:[], music:false, zoom:1};
 let P = null, PACK = null, storageOK = true;
-const PLAYER_DEF = () => ({stats:{food:70, clean:70, fun:70, walk:70}, last:Date.now(), day:'', streak:0, best:0, xp:0, level:1, coins:20, owned:[], wear:{}, wall:'', rug:'', room:{}, m:{}});
+const PLAYER_DEF = () => ({stats:{food:70, clean:70, fun:70, walk:70}, last:Date.now(), day:'', streak:0, best:0, xp:0, level:1, coins:20, owned:[], wear:{}, wall:'', rug:'', room:{}, m:{}, friends:{}, vetDay:''});
 function fixPlayer(p){
   if (!p.room){ p.room = {}; (p.owned || []).forEach(id => { const it = ITEMS[id]; if (it && it.deco && !p.room[it.spot]) p.room[it.spot] = id; }); }
   const d = PLAYER_DEF(); for (const k in d) if (p[k] == null) p[k] = d[k]; if (!PETS[p.pet && p.pet.type]) p.pet = {type:'kitten', name:PETS.kitten.name}; return p; }
@@ -832,13 +897,74 @@ Object.assign(ITEMS, {
 const NY_ITEMS = Object.keys(ITEMS).filter(id => ITEMS[id].ny);
 const WINTER_ITEMS = Object.keys(ITEMS).filter(id => ITEMS[id].winter);
 /* where things stand in the room: left %, top %, size */
-const SPOTS = {shelf:[5,21,8], wallL:[3,40,9], wallR:[86,13,9], floorL:[1,57,13], floorR:[83,54,10], floorR2:[86,78,9]};
-const decoPic = d => d.startsWith('svg:') ? `<span class="pic">${SVGS[d.slice(4)]}</span>` : d;
+/* ================= ROOM THINGS — hand-drawn pictures (instead of emoji) =================
+   every picture stands on its bottom edge, so it sits on the shelf / floor */
+const DK = '#4b3536', DS = `stroke="${DK}" stroke-width="3" stroke-linejoin="round"`;
+const dsv = (w, h, body) => `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${body}</svg>`;
+const outline = (d, col, w = 5) => `<path d="${d}" stroke="${DK}" stroke-width="${w + 4}" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" stroke="${col}" stroke-width="${w}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+const treeSVG = () => dsv(100, 140, `
+  <path d="M32 126H68L64 140H36Z" fill="#e74c3c" ${DS}/><rect x="44" y="114" width="12" height="14" fill="#8a5a32" ${DS}/>
+  <path d="M50 10L76 46H62L86 80H68L96 118H4L32 80H14L38 46H24Z" fill="#3fae5a" ${DS}/>
+  <path d="M50 10L76 46H62L86 80H68L96 118H70L56 98L60 80L50 66L54 46Z" fill="#2f9a4c" opacity=".5"/>
+  <path d="M30 56Q50 66 70 54M22 92Q50 106 82 90" stroke="#ffd23f" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  ${[[42,40,'#ff5c5c'],[62,64,'#5aa9e6'],[36,72,'#ffd23f'],[54,84,'#ff7aa8'],[28,104,'#5aa9e6'],[50,108,'#ff5c5c'],[74,102,'#ffd23f'],[66,40,'#ff7aa8']].map(([x,y,c],i) => `<circle class="tb" style="animation-delay:${i*.3}s" cx="${x}" cy="${y}" r="5" fill="${c}" stroke="${DK}" stroke-width="2"/>`).join('')}
+  <polygon points="${starPts(50,10,12,5)}" fill="#ffd23f" stroke="${DK}" stroke-width="2.5" stroke-linejoin="round"/>`);
+const giftSVG = (c = '#e74c3c', r = '#ffd23f') => dsv(100, 96, `
+  <rect x="10" y="40" width="80" height="54" rx="5" fill="${c}" ${DS}/><rect x="6" y="30" width="88" height="16" rx="4" fill="${c}" ${DS}/>
+  <rect x="44" y="30" width="12" height="64" fill="${r}"/><path d="M6 38H94" stroke="${DK}" stroke-width="0"/>
+  <path d="M50 30Q28 6 22 18Q18 30 50 30Q82 30 78 18Q72 6 50 30Z" fill="${r}" ${DS}/><circle cx="50" cy="30" r="6" fill="${r}" ${DS}/>
+  <rect x="10" y="40" width="80" height="54" rx="5" fill="none" ${DS}/>`);
+const DECO_SVG = {
+  plant: () => dsv(100, 110, `<path d="M50 64C38 44 20 40 10 48C22 54 34 60 50 66Z" fill="#6cc070" ${DS}/><path d="M50 64C62 40 82 34 92 42C80 52 66 60 50 66Z" fill="#7fd07f" ${DS}/><path d="M50 66C42 42 46 18 58 6C66 26 62 48 50 66Z" fill="#5fb463" ${DS}/><path d="M28 64H72L66 106H34Z" fill="#e0855a" ${DS}/><rect x="24" y="58" width="52" height="12" rx="4" fill="#ec9a6d" ${DS}/>`),
+  clock: () => dsv(100, 100, `<path d="M30 88L20 98M70 88L80 98" stroke="${DK}" stroke-width="5" stroke-linecap="round"/><circle cx="24" cy="22" r="13" fill="#f7c948" ${DS}/><circle cx="76" cy="22" r="13" fill="#f7c948" ${DS}/><circle cx="50" cy="56" r="38" fill="#ff7a7a" ${DS}/><circle cx="50" cy="56" r="29" fill="#fff" ${DS}/>${[[50,32],[74,56],[50,80],[26,56]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="3" fill="${DK}"/>`).join('')}<path d="M50 56V38M50 56L64 64" stroke="${DK}" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="56" r="4" fill="${DK}"/>`),
+  books: () => dsv(100, 92, `<rect x="66" y="24" width="18" height="66" rx="3" fill="#4cb963" ${DS} transform="rotate(14 75 90)"/><rect x="8" y="20" width="18" height="70" rx="3" fill="#e74c3c" ${DS}/><rect x="26" y="8" width="20" height="82" rx="3" fill="#3d8be8" ${DS}/><rect x="46" y="26" width="17" height="64" rx="3" fill="#f7c948" ${DS}/><path d="M11 32H23M11 76H23M29 22H43M29 76H43M49 40H60" stroke="#fff" stroke-width="3" opacity=".7"/>`),
+  camera: () => dsv(100, 80, `<rect x="32" y="6" width="28" height="16" rx="4" fill="#6b7280" ${DS}/><rect x="6" y="18" width="88" height="58" rx="12" fill="#5c6370" ${DS}/><rect x="8" y="32" width="84" height="10" fill="#474d57"/><circle cx="50" cy="47" r="23" fill="#3f454f" ${DS}/><circle cx="50" cy="47" r="14" fill="#5aa9e6" ${DS}/><circle cx="45" cy="42" r="4.5" fill="#fff" opacity=".85"/><rect x="72" y="24" width="14" height="8" rx="2" fill="#fff6c2" stroke="${DK}" stroke-width="2"/><circle cx="18" cy="27" r="4" fill="#ff6b6b"/>`),
+  phone: () => dsv(100, 84, `<path d="M12 78L22 38H78L88 78Z" fill="#e74c3c" ${DS}/><circle cx="50" cy="58" r="14" fill="#fff" ${DS}/>${[0,60,120,180,240,300].map(a => `<circle cx="${50 + 8*Math.cos(a*Math.PI/180)}" cy="${58 + 8*Math.sin(a*Math.PI/180)}" r="2" fill="${DK}"/>`).join('')}<path d="M12 30Q10 12 26 14L32 28Q22 30 24 38H14Z M88 30Q90 12 74 14L68 28Q78 30 76 38H86Z" fill="#c0392b" ${DS}/>${outline('M26 16Q50 2 74 16','#c0392b',9)}`),
+  globe: () => dsv(100, 110, `<path d="M28 104Q28 94 50 94Q72 94 72 104Z" fill="#9b6a4a" ${DS}/><path d="M50 94V82" stroke="${DK}" stroke-width="5"/><path d="M16 30A38 38 0 0 0 80 78" stroke="#c48e60" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="50" cy="48" r="32" fill="#5aa9e6" ${DS}/><path d="M30 32Q40 22 50 30Q48 42 38 42Q28 40 30 32Z M56 54Q66 48 76 56Q72 68 62 66Q54 62 56 54Z M36 62Q44 60 46 68Q40 74 34 68Z" fill="#7cc58a" stroke="${DK}" stroke-width="2"/><path d="M30 40Q32 26 42 20" stroke="#fff" stroke-width="3" opacity=".6" fill="none" stroke-linecap="round"/>`),
+  candle: () => dsv(100, 110, `<circle cx="50" cy="24" r="20" fill="#ffd23f" opacity=".2"/><ellipse cx="50" cy="102" rx="30" ry="7" fill="#f7c948" ${DS}/><rect x="36" y="42" width="28" height="60" rx="5" fill="#fff4e0" ${DS}/><path d="M36 54Q43 60 50 52Q57 60 64 54" stroke="#e74c3c" stroke-width="4" fill="none"/><path d="M50 42V34" stroke="${DK}" stroke-width="3"/><path d="M50 6Q63 20 59 29Q55 37 50 35Q42 35 42 27Q42 17 50 6Z" fill="#ffb347" stroke="#e67e22" stroke-width="2.5"/><path d="M50 18Q55 26 52 30Q48 32 47 28Q46 24 50 18Z" fill="#fff3a0"/>`),
+  cocoa: () => dsv(100, 100, `<path d="M38 30Q30 20 38 10M58 30Q50 20 58 8" stroke="#c9b8b0" stroke-width="4" fill="none" stroke-linecap="round"/>${outline('M74 52Q94 52 92 66Q90 80 72 78','#5aa9e6',5)}<path d="M16 38H80L74 92Q74 96 68 96H28Q22 96 22 92Z" fill="#5aa9e6" ${DS}/><ellipse cx="48" cy="40" rx="32" ry="7" fill="#8a5a32" ${DS}/><rect x="32" y="31" width="13" height="10" rx="3" fill="#fff" stroke="${DK}" stroke-width="2"/><rect x="50" y="33" width="13" height="10" rx="3" fill="#ffd6e0" stroke="${DK}" stroke-width="2"/><path d="M48 58V80M38 64L58 74M58 64L38 74" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`),
+  balloons: () => dsv(100, 132, `<path d="M30 72Q36 98 50 128M54 62Q50 96 50 128M78 68Q64 98 50 128" stroke="${DK}" stroke-width="2" fill="none"/><ellipse cx="30" cy="44" rx="22" ry="27" fill="#ff6b6b" ${DS}/><path d="M26 74L30 69L34 74Z" fill="#ff6b6b" ${DS}/><ellipse cx="76" cy="42" rx="20" ry="25" fill="#f7c948" ${DS}/><path d="M72 70L76 65L80 70Z" fill="#f7c948" ${DS}/><ellipse cx="54" cy="32" rx="22" ry="27" fill="#5aa9e6" ${DS}/><path d="M50 62L54 57L58 62Z" fill="#5aa9e6" ${DS}/>${[[22,32],[48,20],[70,30]].map(([x,y]) => `<ellipse cx="${x}" cy="${y}" rx="4" ry="7" fill="#fff" opacity=".6" transform="rotate(-20 ${x} ${y})"/>`).join('')}`),
+  kite: () => dsv(100, 132, `<path d="M50 92Q38 104 54 112Q66 120 50 130" stroke="${DK}" stroke-width="2.5" fill="none"/><path d="M43 104L50 99L57 104L50 109Z M43 120L50 115L57 120L50 125Z" fill="#e74c3c" stroke="${DK}" stroke-width="2"/><path d="M50 4L86 46L50 92L14 46Z" fill="#ff8fb1"/><path d="M50 4L86 46H50Z" fill="#ffd23f"/><path d="M50 92L14 46H50Z" fill="#5aa9e6"/><path d="M50 4L86 46L50 92L14 46Z M50 4V92M14 46H86" fill="none" ${DS}/>`),
+  mirror: () => dsv(100, 122, `<circle cx="50" cy="6" r="4" fill="${DK}"/><ellipse cx="50" cy="64" rx="40" ry="52" fill="#d9a46b" ${DS}/><ellipse cx="50" cy="64" rx="31" ry="43" fill="#cfeaf8" ${DS}/><path d="M32 46Q36 32 48 28M30 62Q30 56 32 52" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>`),
+  bells: () => dsv(100, 100, [[30,-12],[70,12]].map(([x,r]) => `<g transform="rotate(${r} ${x} 44)"><path d="M${x} 38Q${x-16} 38 ${x-16} 62L${x-20} 80H${x+20}L${x+16} 62Q${x+16} 38 ${x} 38Z" fill="#f7c948" ${DS}/><circle cx="${x}" cy="86" r="6" fill="#e0a800" ${DS}/><path d="M${x-10} 56Q${x-8} 46 ${x-2} 44" stroke="#fff6c2" stroke-width="3" fill="none" stroke-linecap="round"/></g>`).join('') + `<path d="M46 26L34 40M54 26L66 40" stroke="#e74c3c" stroke-width="5"/><path d="M50 22L28 8V32ZM50 22L72 8V32Z" fill="#e74c3c" ${DS}/><circle cx="50" cy="22" r="6" fill="#e74c3c" ${DS}/><ellipse cx="38" cy="16" rx="8" ry="4" fill="#3fae5a" transform="rotate(-30 38 16)"/><ellipse cx="62" cy="16" rx="8" ry="4" fill="#3fae5a" transform="rotate(30 62 16)"/>`),
+  mittens: () => { const m = (c) => `<rect x="14" y="16" width="28" height="12" rx="3" fill="#fff" ${DS}/><path d="M16 28H40V64Q40 86 26 86Q12 86 12 68V50Q4 48 6 40Q8 34 14 38Z" fill="${c}" ${DS}/><path d="M18 46L34 46M18 58L34 58" stroke="#fff" stroke-width="3" stroke-dasharray="3 3" opacity=".8"/>`;
+    return dsv(100, 92, `<path d="M6 10Q50 30 94 10" stroke="${DK}" stroke-width="2.5" fill="none"/>${m('#e74c3c')}<g transform="translate(100 0) scale(-1 1)">${m('#5aa9e6')}</g>`); },
+  picture: () => dsv(100, 92, `<path d="M50 4L30 22M50 4L70 22" stroke="${DK}" stroke-width="2.5"/><circle cx="50" cy="4" r="3" fill="${DK}"/><rect x="8" y="20" width="84" height="68" rx="4" fill="#d9a46b" ${DS}/><rect x="17" y="29" width="66" height="50" fill="#cfeaf8" ${DS}/><circle cx="66" cy="43" r="7" fill="#f7c948"/><path d="M17 79L38 52L52 68L62 58L83 79Z" fill="#7cc58a" stroke="${DK}" stroke-width="2.5" stroke-linejoin="round"/>`),
+  rainbow: () => dsv(100, 66, [['#ff6b6b',38],['#ffb347',31],['#ffd23f',24],['#7cc58a',17],['#5aa9e6',10]].map(([c,r]) => `<path d="M${50-r} 58A${r} ${r} 0 0 1 ${50+r} 58" stroke="${c}" stroke-width="7.5" fill="none"/>`).join('') + `<path d="M4 60Q4 50 14 52Q18 42 28 48Q36 50 32 60Z M96 60Q96 50 86 52Q82 42 72 48Q64 50 68 60Z" fill="#fff" ${DS}/>`),
+  star: () => dsv(100, 100, `<polygon points="${starPts(50,52,46,21)}" fill="#f7c948" ${DS}/><polygon points="${starPts(50,52,30,14)}" fill="#ffe27a"/><circle cx="42" cy="50" r="3.5" fill="${DK}"/><circle cx="58" cy="50" r="3.5" fill="${DK}"/><path d="M43 60Q50 66 57 60" stroke="${DK}" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="36" cy="58" r="4" fill="#ff8fb1" opacity=".6"/><circle cx="64" cy="58" r="4" fill="#ff8fb1" opacity=".6"/>`),
+  stocking: () => dsv(100, 120, `<path d="M66 20Q80 12 76 4" stroke="${DK}" stroke-width="3" fill="none"/><path d="M30 32H66V80Q66 98 50 106L30 114Q14 118 12 104Q10 94 22 88L30 84Z" fill="#e74c3c" ${DS}/><path d="M12 104Q14 118 30 114L25 98Q16 98 12 104Z" fill="#fff" stroke="${DK}" stroke-width="2"/><polygon points="${starPts(47,64,10,4.5)}" fill="#ffd23f"/><rect x="24" y="18" width="48" height="20" rx="7" fill="#fff" ${DS}/>`),
+  flake: () => dsv(100, 100, [0,60,120,180,240,300].map(a => `<g transform="rotate(${a} 50 50)">${outline('M50 50V10M50 24L40 16M50 24L60 16M50 36L42 30M50 36L58 30','#bfe3ff',4.5)}</g>`).join('') + `<circle cx="50" cy="50" r="7" fill="#bfe3ff" ${DS}/>`),
+  lamp: () => dsv(100, 200, `<ellipse cx="50" cy="84" rx="34" ry="11" fill="#fff3b0" opacity=".55"/><path d="M50 70V188" stroke="${DK}" stroke-width="7"/><path d="M50 70V188" stroke="#c48e60" stroke-width="3"/><ellipse cx="50" cy="192" rx="26" ry="7" fill="#9b6a4a" ${DS}/><path d="M20 72L34 18H66L80 72Z" fill="#f6d27a" ${DS}/><path d="M26 60H74" stroke="#e0b44f" stroke-width="4"/>`),
+  guitar: () => dsv(100, 172, `<rect x="44" y="12" width="12" height="90" fill="#9b6a4a" ${DS}/><path d="M44 30H56M44 46H56M44 62H56" stroke="#e6c79a" stroke-width="2"/><rect x="39" y="2" width="22" height="16" rx="4" fill="#6e4a2f" ${DS}/><circle cx="36" cy="8" r="3" fill="${DK}"/><circle cx="64" cy="8" r="3" fill="${DK}"/><path d="M50 88Q22 84 22 108Q20 122 30 128Q16 140 22 156Q30 170 50 168Q70 170 78 156Q84 140 70 128Q80 122 78 108Q78 84 50 88Z" fill="#e67e22" ${DS}/><circle cx="50" cy="124" r="10" fill="#3b2a20"/><rect x="38" y="146" width="24" height="6" rx="2" fill="#6e4a2f"/><path d="M47 14V148M50 14V148M53 14V148" stroke="#fff" stroke-width=".8" opacity=".8"/>`),
+  bike: () => dsv(100, 70, `${[22,78].map(x => `<circle cx="${x}" cy="48" r="18" fill="none" stroke="${DK}" stroke-width="5"/><circle cx="${x}" cy="48" r="3" fill="${DK}"/><path d="M${x} 32V64M${x-16} 48H${x+16}" stroke="#aaa" stroke-width="1.5"/>`).join('')}${outline('M22 48L38 24H66L78 48M38 24L52 48H22M52 48L66 24','#e74c3c',3.5)}${outline('M32 18H46','#4b3536',4)}${outline('M60 14L66 24M58 14H70','#4b3536',3)}<circle cx="52" cy="48" r="5" fill="#f7c948" stroke="${DK}" stroke-width="2"/>`),
+  sofa: () => dsv(100, 62, `<rect x="8" y="10" width="84" height="32" rx="10" fill="#9b7be0" ${DS}/><rect x="24" y="16" width="18" height="16" rx="5" fill="#ffd23f" ${DS} transform="rotate(-8 33 24)"/><rect x="2" y="26" width="18" height="28" rx="7" fill="#8a6ad0" ${DS}/><rect x="80" y="26" width="18" height="28" rx="7" fill="#8a6ad0" ${DS}/><rect x="18" y="32" width="64" height="22" rx="6" fill="#b49cf0" ${DS}/><path d="M50 34V52" stroke="${DK}" stroke-width="2.5"/><path d="M10 56V60M90 56V60" stroke="${DK}" stroke-width="6" stroke-linecap="round"/>`),
+  tank: () => dsv(100, 92, `<rect x="14" y="66" width="72" height="24" rx="3" fill="#9b6a4a" ${DS}/><path d="M30 76H70" stroke="#c48e60" stroke-width="3"/><rect x="8" y="10" width="84" height="56" rx="6" fill="#bfe6ff" ${DS}/><rect x="11" y="20" width="78" height="43" rx="3" fill="#7fc8ee"/><path d="M11 56Q30 50 50 56T89 54V63H11Z" fill="#f1d2a7"/><path d="M24 60Q16 46 26 34M30 60Q36 48 28 40" stroke="#3fa35b" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="58" cy="38" rx="12" ry="8" fill="#ff9f43" stroke="${DK}" stroke-width="2"/><path d="M70 38L80 31V45Z" fill="#ff9f43" stroke="${DK}" stroke-width="2" stroke-linejoin="round"/><circle cx="53" cy="36" r="2" fill="${DK}"/><circle cx="46" cy="28" r="2.5" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="42" cy="22" r="1.8" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="6" y="6" width="88" height="8" rx="3" fill="#4b5563"/>`),
+  xtree: treeSVG,
+  skis: () => dsv(100, 162, `<rect x="30" y="8" width="13" height="150" rx="6.5" fill="#e74c3c" ${DS} transform="rotate(-7 36 84)"/><rect x="56" y="8" width="13" height="150" rx="6.5" fill="#3d8be8" ${DS} transform="rotate(7 62 84)"/><rect x="31" y="84" width="14" height="10" rx="2" fill="#4b5563" transform="rotate(-7 36 84)"/><rect x="55" y="84" width="14" height="10" rx="2" fill="#4b5563" transform="rotate(7 62 84)"/><path d="M16 14L26 156M84 14L74 156" stroke="${DK}" stroke-width="4" stroke-linecap="round"/><circle cx="25" cy="146" r="6" fill="none" stroke="${DK}" stroke-width="2.5"/><circle cx="75" cy="146" r="6" fill="none" stroke="${DK}" stroke-width="2.5"/><circle cx="16" cy="12" r="4" fill="#ffd23f" stroke="${DK}" stroke-width="2"/><circle cx="84" cy="12" r="4" fill="#ffd23f" stroke="${DK}" stroke-width="2"/>`),
+  teddy: () => dsv(100, 102, `<circle cx="28" cy="20" r="12" fill="#c98a52" ${DS}/><circle cx="28" cy="20" r="6" fill="#e8b98a"/><circle cx="72" cy="20" r="12" fill="#c98a52" ${DS}/><circle cx="72" cy="20" r="6" fill="#e8b98a"/><ellipse cx="22" cy="66" rx="9" ry="15" fill="#c98a52" ${DS} transform="rotate(25 22 66)"/><ellipse cx="78" cy="66" rx="9" ry="15" fill="#c98a52" ${DS} transform="rotate(-25 78 66)"/><ellipse cx="50" cy="72" rx="30" ry="26" fill="#c98a52" ${DS}/><ellipse cx="50" cy="76" rx="16" ry="14" fill="#e8b98a"/><ellipse cx="30" cy="94" rx="14" ry="8" fill="#c98a52" ${DS}/><ellipse cx="70" cy="94" rx="14" ry="8" fill="#c98a52" ${DS}/><circle cx="50" cy="36" r="24" fill="#c98a52" ${DS}/><ellipse cx="50" cy="44" rx="11" ry="8" fill="#e8b98a" stroke="${DK}" stroke-width="2"/><ellipse cx="50" cy="40" rx="4" ry="3" fill="${DK}"/><circle cx="41" cy="32" r="3" fill="${DK}"/><circle cx="59" cy="32" r="3" fill="${DK}"/><path d="M46 47Q50 50 54 47" stroke="${DK}" stroke-width="2" fill="none"/><path d="M50 60L40 54V66ZM50 60L60 54V66Z" fill="#e74c3c" stroke="${DK}" stroke-width="2" stroke-linejoin="round"/>`),
+  doll: () => dsv(100, 128, `<path d="M50 30Q14 30 16 80Q18 126 50 126Q82 126 84 80Q86 30 50 30Z" fill="#e74c3c" ${DS}/><ellipse cx="50" cy="90" rx="22" ry="27" fill="#fff6c2" ${DS}/><circle cx="50" cy="88" r="7" fill="#ff7aa8"/>${[0,72,144,216,288].map(a => `<circle cx="${50 + 10*Math.cos(a*Math.PI/180)}" cy="${88 + 10*Math.sin(a*Math.PI/180)}" r="4.5" fill="#ffd23f"/>`).join('')}<path d="M40 104Q50 112 60 104" stroke="#3fae5a" stroke-width="3" fill="none"/><circle cx="50" cy="34" r="26" fill="#e74c3c" ${DS}/><circle cx="50" cy="37" r="17" fill="#ffe2cc" ${DS}/><path d="M34 32Q50 18 66 32Q58 26 50 28Q42 26 34 32Z" fill="#7a4a2a"/><circle cx="44" cy="38" r="2.5" fill="${DK}"/><circle cx="56" cy="38" r="2.5" fill="${DK}"/><circle cx="40" cy="44" r="3.5" fill="#ff8fb1" opacity=".7"/><circle cx="60" cy="44" r="3.5" fill="#ff8fb1" opacity=".7"/><path d="M46 45Q50 48 54 45" stroke="#c0392b" stroke-width="2" fill="none" stroke-linecap="round"/>`),
+  robot: () => dsv(100, 130, `<path d="M50 18V8" stroke="${DK}" stroke-width="3"/><circle cx="50" cy="7" r="5" fill="#ff6b6b" ${DS}/><rect x="6" y="66" width="13" height="32" rx="6" fill="#9fb6cf" ${DS}/><rect x="81" y="66" width="13" height="32" rx="6" fill="#9fb6cf" ${DS}/><rect x="28" y="104" width="16" height="20" rx="3" fill="#7a96b8" ${DS}/><rect x="56" y="104" width="16" height="20" rx="3" fill="#7a96b8" ${DS}/><rect x="20" y="62" width="60" height="44" rx="10" fill="#7a96b8" ${DS}/><rect x="32" y="72" width="36" height="22" rx="4" fill="#dfe9f5" stroke="${DK}" stroke-width="2"/><circle cx="42" cy="83" r="4" fill="#ff6b6b"/><circle cx="58" cy="83" r="4" fill="#4cb963"/><rect x="24" y="18" width="52" height="40" rx="10" fill="#9fb6cf" ${DS}/><circle cx="39" cy="36" r="8" fill="#fff" stroke="${DK}" stroke-width="2"/><circle cx="61" cy="36" r="8" fill="#fff" stroke="${DK}" stroke-width="2"/><circle cx="40" cy="37" r="3.5" fill="${DK}"/><circle cx="62" cy="37" r="3.5" fill="${DK}"/><rect x="38" y="48" width="24" height="5" rx="2" fill="${DK}"/>`),
+  alien: () => dsv(100, 122, `<path d="M36 22L26 6M64 22L74 6" stroke="${DK}" stroke-width="3"/><circle cx="26" cy="6" r="5" fill="#ffd23f" ${DS}/><circle cx="74" cy="6" r="5" fill="#ffd23f" ${DS}/><ellipse cx="30" cy="114" rx="12" ry="6" fill="#7cc35a" ${DS}/><ellipse cx="70" cy="114" rx="12" ry="6" fill="#7cc35a" ${DS}/><ellipse cx="50" cy="94" rx="24" ry="20" fill="#7cc35a" ${DS}/><path d="M28 88L14 100M72 88L86 100" stroke="${DK}" stroke-width="9" stroke-linecap="round"/><path d="M28 88L14 100M72 88L86 100" stroke="#7cc35a" stroke-width="5" stroke-linecap="round"/><ellipse cx="50" cy="48" rx="36" ry="32" fill="#8fd36a" ${DS}/><ellipse cx="36" cy="46" rx="10" ry="13" fill="#1d2b16" transform="rotate(-15 36 46)"/><ellipse cx="64" cy="46" rx="10" ry="13" fill="#1d2b16" transform="rotate(15 64 46)"/><circle cx="33" cy="41" r="3.5" fill="#fff"/><circle cx="61" cy="41" r="3.5" fill="#fff"/><path d="M40 66Q50 74 60 66" stroke="${DK}" stroke-width="3" fill="none" stroke-linecap="round"/>`),
+  snowman: () => dsv(100, 132, `<path d="M26 82L6 70M74 82L94 70" stroke="#8a5a32" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="98" r="31" fill="#fff" ${DS}/><circle cx="50" cy="52" r="23" fill="#fff" ${DS}/><path d="M30 70Q50 80 70 70L72 78Q50 88 28 78Z" fill="#e74c3c" ${DS}/><path d="M62 78L68 100L58 98Z" fill="#e74c3c" ${DS}/><rect x="34" y="12" width="32" height="20" rx="2" fill="#3b3b4a" ${DS}/><rect x="27" y="30" width="46" height="7" rx="3" fill="#3b3b4a" ${DS}/><circle cx="42" cy="48" r="3" fill="${DK}"/><circle cx="58" cy="48" r="3" fill="${DK}"/><path d="M50 54L68 58L50 61Z" fill="#f39c34" stroke="${DK}" stroke-width="2" stroke-linejoin="round"/><path d="M42 63Q50 68 58 63" stroke="${DK}" stroke-width="2.5" fill="none" stroke-linecap="round"/>${[92,106,120].map(y => `<circle cx="50" cy="${y}" r="3.5" fill="${DK}"/>`).join('')}`),
+  penguin: () => dsv(100, 122, `<ellipse cx="36" cy="116" rx="12" ry="6" fill="#ff9f43" ${DS}/><ellipse cx="64" cy="116" rx="12" ry="6" fill="#ff9f43" ${DS}/><ellipse cx="18" cy="72" rx="9" ry="22" fill="#2f3446" ${DS} transform="rotate(18 18 72)"/><ellipse cx="82" cy="72" rx="9" ry="22" fill="#2f3446" ${DS} transform="rotate(-18 82 72)"/><ellipse cx="50" cy="68" rx="32" ry="46" fill="#2f3446" ${DS}/><ellipse cx="50" cy="78" rx="22" ry="34" fill="#fff"/><path d="M28 44Q30 26 50 34Q70 26 72 44Q72 58 50 60Q28 58 28 44Z" fill="#fff"/><circle cx="41" cy="44" r="4" fill="${DK}"/><circle cx="59" cy="44" r="4" fill="${DK}"/><circle cx="40" cy="42.5" r="1.4" fill="#fff"/><circle cx="58" cy="42.5" r="1.4" fill="#fff"/><path d="M43 52L50 60L57 52Z" fill="#ff9f43" stroke="${DK}" stroke-width="2" stroke-linejoin="round"/><circle cx="34" cy="54" r="4" fill="#ff8fb1" opacity=".6"/><circle cx="66" cy="54" r="4" fill="#ff8fb1" opacity=".6"/>`),
+  ball: () => dsv(100, 100, `<circle cx="50" cy="52" r="44" fill="#fff" ${DS}/><polygon points="${[0,1,2,3,4].map(i => { const a = -Math.PI/2 + i*2*Math.PI/5; return `${(50 + 15*Math.cos(a)).toFixed(1)},${(52 + 15*Math.sin(a)).toFixed(1)}`; }).join(' ')}" fill="${DK}"/>${[0,1,2,3,4].map(i => { const a = -Math.PI/2 + i*2*Math.PI/5, x = 50 + 36*Math.cos(a), y = 52 + 36*Math.sin(a); return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="8" fill="${DK}"/><path d="M${(50 + 15*Math.cos(a)).toFixed(1)} ${(52 + 15*Math.sin(a)).toFixed(1)}L${x.toFixed(1)} ${y.toFixed(1)}" stroke="${DK}" stroke-width="2.5"/>`; }).join('')}<circle cx="50" cy="52" r="44" fill="none" ${DS}/>`),
+  car: () => dsv(100, 60, `<path d="M6 40Q6 30 16 30H28L40 14H66L80 30H88Q96 30 96 38V44Q96 48 92 48H10Q6 48 6 44Z" fill="#3d8be8" ${DS}/><path d="M43 18H54V30H33Z M58 18H65L75 30H58Z" fill="#bfe6ff" stroke="${DK}" stroke-width="2" stroke-linejoin="round"/><circle cx="92" cy="38" r="3" fill="#ffd23f"/>${[28,74].map(x => `<circle cx="${x}" cy="48" r="10" fill="#333" ${DS}/><circle cx="${x}" cy="48" r="4" fill="#ccc"/>`).join('')}`),
+  train: () => dsv(100, 72, `<circle cx="22" cy="6" r="5" fill="#ddd"/><circle cx="30" cy="2" r="4" fill="#eee"/><path d="M8 48L2 58H14Z" fill="#f7c948" ${DS}/><rect x="10" y="26" width="50" height="24" rx="8" fill="#3d8be8" ${DS}/><path d="M18 26V12H30V26" fill="#555" ${DS}/><rect x="56" y="12" width="36" height="38" rx="4" fill="#e74c3c" ${DS}/><rect x="62" y="18" width="24" height="14" rx="3" fill="#bfe6ff" stroke="${DK}" stroke-width="2"/><rect x="52" y="6" width="44" height="8" rx="3" fill="#333"/>${[[22,9],[44,9],[76,11]].map(([x,r]) => `<circle cx="${x}" cy="58" r="${r}" fill="#333" ${DS}/><circle cx="${x}" cy="58" r="3.5" fill="#ffd23f"/>`).join('')}`),
+  rocket: () => dsv(100, 148, `<path d="M40 102Q50 146 60 102Z" fill="#ffb347" stroke="#e67e22" stroke-width="2.5"/><path d="M45 102Q50 126 55 102Z" fill="#fff3a0"/><path d="M26 72L8 104L30 96Z M74 72L92 104L70 96Z" fill="#e74c3c" ${DS}/><rect x="36" y="90" width="28" height="12" fill="#7a7a7a" ${DS}/><path d="M50 6Q78 32 74 92H26Q22 32 50 6Z" fill="#f2f2f2" ${DS}/><path d="M50 6Q64 18 69 34H31Q36 18 50 6Z" fill="#e74c3c" ${DS}/><circle cx="50" cy="58" r="12" fill="#5aa9e6" ${DS}/><circle cx="46" cy="54" r="3.5" fill="#fff" opacity=".8"/>`),
+  lorry: () => dsv(100, 66, `<rect x="4" y="10" width="60" height="36" rx="4" fill="#f7c948" ${DS}/><path d="M64 20H82L95 34V46H64Z" fill="#e74c3c" ${DS}/><path d="M68 24H80L88 33H68Z" fill="#bfe6ff" stroke="${DK}" stroke-width="2" stroke-linejoin="round"/><rect x="4" y="46" width="91" height="6" fill="#555"/>${[20,44,80].map(x => `<circle cx="${x}" cy="54" r="9" fill="#333" ${DS}/><circle cx="${x}" cy="54" r="3.5" fill="#ccc"/>`).join('')}`),
+  presents: () => dsv(100, 96, `<g transform="translate(50 30) scale(.5)">${giftSVG('#3d8be8','#fff').replace(/<\/?svg[^>]*>/g,'')}</g><g transform="translate(0 20) scale(.62)">${giftSVG().replace(/<\/?svg[^>]*>/g,'')}</g>`),
+  sledge: () => dsv(100, 56, `<path d="M84 16Q98 14 96 4" stroke="${DK}" stroke-width="2" fill="none"/><path d="M24 30V44M50 30V44M72 30V44" stroke="${DK}" stroke-width="4"/>${outline('M6 46H80Q96 46 94 30','#e74c3c',5)}<rect x="14" y="10" width="68" height="11" rx="4" fill="#c98a52" ${DS}/><rect x="14" y="22" width="68" height="9" rx="3" fill="#b07740" ${DS}/>`),
+  skates: () => dsv(100, 80, `<path d="M26 62V68M44 62V68M70 62V68" stroke="#9aa6b1" stroke-width="4"/>${outline('M12 70H90Q96 70 94 62','#cfd6dd',4)}<path d="M18 8H46V34Q46 40 54 42L80 48Q88 50 88 58V62H18Z" fill="#fff" ${DS}/><rect x="16" y="4" width="32" height="10" rx="4" fill="#ff7aa8" ${DS}/><path d="M24 22L40 30M40 22L24 30M26 36L44 44M44 36L28 46" stroke="#5aa9e6" stroke-width="2.5"/>`)
+};
+const decoSVG = id => DECO_SVG[id] ? DECO_SVG[id]() : `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle">${ITEMS[id] ? ITEMS[id].deco : '❓'}</text></svg>`;
+
+/* where things stand in the room: centre x %, the line they stand on (y %), width % */
+const SPOTS = {shelf:[12,30.5,12], wallL:[8.5,58,13], wallR:[92,36,13], floorL:[13,92,25], floorR:[87,82,21], floorR2:[85,99,17]};
 const itemIcon = id => {
   const it = ITEMS[id];
   if (it.wall) return `<span class="cdot" style="background:${it.wall};font-size:46px"></span>`;
   if (it.rug) return `<span class="cdot" style="background:${it.rug};font-size:46px;border-radius:50%/36%;width:1.4em"></span>`;
-  if (it.deco) return `<span style="font-size:46px;line-height:1">${decoPic(it.deco)}</span>`;
+  if (it.deco) return decoSVG(id);
   const vb = {head:'28 -30 144 100', eyes:'34 62 132 56', neck:'50 124 100 64', back:'0 96 200 112'}[it.slot];
   return `<svg viewBox="${vb}">${it.slot === 'back' ? wearBack({back:id}) : wearHTML({[it.slot]:id})}</svg>`;
 };
@@ -1066,10 +1192,10 @@ setInterval(tick, 60000);
 const NEEDS = [['food','🍖','Food','var(--food)'],['clean','🫧','Clean','var(--clean)'],['fun','⚽','Fun','var(--fun)'],['walk','🌳','Walk','var(--walk)']];
 function roomHTML(){
   const wall = P.wall && ITEMS[P.wall] ? ITEMS[P.wall].wall : '';
-  const decos = Object.entries(P.room || {}).filter(([sp,id]) => ITEMS[id] && SPOTS[sp]).map(([sp,id]) => { const [x,y,f] = SPOTS[sp]; return `<span class="deco" ${sayA(ITEMS[id].name)} style="left:${x}%;top:${y}%;font-size:${f}cqw">${decoPic(ITEMS[id].deco)}</span>`; }).join('');
+  const decos = Object.entries(P.room || {}).filter(([sp,id]) => ITEMS[id] && SPOTS[sp]).map(([sp,id]) => { const [x,y,w] = SPOTS[sp]; return `<span class="deco" ${sayA(ITEMS[id].name)} style="left:${x}%;top:${y}%;width:${w}%">${decoSVG(id)}</span>`; }).join('');
   const rug = P.rug && ITEMS[P.rug] ? ` style="background:${ITEMS[P.rug].rug}"` : '';
   return `<div class="wall" ${wall ? `style="background:${wall}"` : ''}></div><div class="rod"></div><div class="window"><i style="left:12%;height:16%"></i><i style="left:30%;height:24%"></i><i style="right:14%;height:20%"></i>${isSnow() ? SNOW : ''}</div>
-    <div class="curtain l"></div><div class="curtain r"></div><div class="shelf"></div><div class="floor"></div><div class="rug"${rug}></div>${decos}${isNY() ? garlandHTML() + (P.room.floorL === 'xtree' ? '' : `<span class="nytree" ${sayA('New Year tree')}>🎄</span>`) : ''}`;
+    <div class="curtain l"></div><div class="curtain r"></div><div class="shelf"></div><div class="floor"></div><div class="rug"${rug}></div>${decos}${isNY() ? garlandHTML() + (P.room.floorL === 'xtree' ? '' : `<span class="nytree" ${sayA('New Year tree')}>${treeSVG()}</span>`) : ''}`;
 }
 function needLine(){
   const s = P.stats, low = [['food',"I'm hungry! 🍖"],['clean',"I'm dirty! 🫧"],['fun',"Let's play! ⚽"],['walk',"Let's go for a walk!"]].sort((a,b) => s[a[0]] - s[b[0]]);
@@ -1098,13 +1224,13 @@ function renderHome(){
   view(`<div class="homehead"><span class="lv">⭐ Level ${P.level}</span><div class="xp"><i style="width:${pct*100}%"></i></div><span class="pill">🪙 ${P.coins}</span><span class="pill">🔥 ${P.streak}</span></div>
     <div class="scene room" id="room">${roomHTML()}
       <div class="bubble" id="bub" ${sayA(nl || nyLine || it.en, true)}>${esc(bubble)}</div>
-      ${giftReady ? `<button class="nygift" id="nyGift" title="Open me!">🎁</button>` : ''}
+      ${giftReady ? `<button class="nygift" id="nyGift" title="Open me!"><span>${giftSVG()}</span></button>` : ''}
       <div class="petbox" id="pet">${myPet()}${P.stats.clean < 25 ? '<span class="stink" style="left:-4%;top:30%">💨</span><span class="stink" style="right:-4%;top:40%;animation-delay:.6s">💨</span>' : ''}</div></div>
     <div class="needs">${NEEDS.map(([k,ic,lab,col]) => `<div class="need card ${P.stats[k] < 30 ? 'low' : ''}"><span>${ic}</span><div class="bar"><i style="width:${P.stats[k]}%;background:${col}"></i></div><small>${lab}</small></div>`).join('')}</div>
     <div class="acts">
       ${[['feed','🍖','Feed','food'],['wash','🛁','Wash','clean'],['play','⚽','Play','fun'],['walk','🌳','Walk','walk']].map(([a,ic,lab,k]) => `<button class="act card" data-a="${a}"><span>${ic}</span>${lab}${P.stats[k] < 30 ? '<i class="dot">!</i>' : ''}</button>`).join('')}
     </div>
-    ${isSnow() ? `<div class="acts"><button class="act card wide" data-a="snow"><span>⛄</span><b>Snowball game</b><small>winter game</small></button></div>` : ''}
+    <div class="acts" style="grid-template-columns:${isSnow() ? '1fr 1fr' : '1fr'}">${isSnow() ? `<button class="act card wide" data-a="snow" style="grid-column:auto"><span>⛄</span><b>Snowballs</b></button>` : ''}<button class="act card wide town" data-a="town" style="grid-column:auto"><span>🗺️</span><b>Go outside</b>${Object.keys(NB).some(id => !doneToday(id,'visit')) ? '<i class="dot">!</i>' : ''}</button></div>
     <div class="acts small">
       <button class="act card" data-a="practice"><span>📝</span>Practice</button>
       <button class="act card" data-a="words"><span>📚</span>My words</button>
@@ -1131,7 +1257,7 @@ function openPresent(){
   if (itemId){ const it = ITEMS[itemId]; P.owned.push(itemId);
     if (it.slot) P.wear[it.slot] = itemId; else if (it.wall) P.wall = itemId; else if (it.deco) P.room[it.spot] = itemId; }
   save(); sfx.win(); confetti(['❄️','⭐','🎁','✨'], 24);
-  modal(`<div class="giftbox">🎁</div><h2>A present for you!</h2>
+  modal(`<div class="giftbox" style="width:100px">${giftSVG()}</div><h2>A present for you!</h2>
     <div class="card" style="padding:12px 18px;display:flex;align-items:center;gap:14px" ${sayA(w.en)}><span style="font-size:54px">${picHTML(w)}</span><div style="text-align:left"><b style="font-size:26px">${esc(w.en)}</b><br><span class="note">${esc(w.ru)} 🔊</span></div></div>
     ${itemId ? `<p>And a New Year surprise:</p><div class="item card on" style="width:150px"><div class="ii">${itemIcon(itemId)}</div><b>${esc(ITEMS[itemId].name)}</b></div>` : ''}
     <div class="rewards"><span>+${coins} 🪙</span><span>🎁 ${n} / 32</span></div>
@@ -1143,6 +1269,7 @@ function openPresent(){
 }
 function goTo(a){
   if (['feed','wash','play','walk','practice','snow'].includes(a)) startAct(a);
+  else if (a === 'town') town();
   else if (a === 'words') myWords();
   else if (a === 'shop') shop();
   else if (a === 'settings') settings();
@@ -1510,6 +1637,527 @@ function practiceRound(){
       else { $$('#ts .tslot').forEach((s,i) => { if (g[i] !== w[i]) s.classList.add('bad'); }); anim($('#ts'),'shake'); $('#fb').className = 'fb bad'; $('#fb').textContent = `Try again! It starts with “${w[0]}”.`; }
     };
   }
+}
+
+/* =====================================================================
+   TOWN — go outside: a little map with the vet clinic and three neighbours.
+   Visit them every day, talk, bring presents and play → the friendship grows.
+   ===================================================================== */
+let TOWN = false;
+const TK = '#4b3536', TS = `stroke="${TK}" stroke-width="3" stroke-linejoin="round"`;
+
+/* ---------- animals (neighbours and vet patients) ---------- */
+function animalSVG(kind, o = {}){
+  const C = {rabbit:{f:'#f6eef0', d:'#d9c8cd', in:'#ffc2d4'}, bear:{f:'#b07a4a', d:'#8a5a32', in:'#e8b98a'}, mouse:{f:'#bdb8c8', d:'#9d97ab', in:'#ffc2d4'},
+             cat:{f:'#f6b26b', d:'#d98b3f', in:'#ffd2a8'}, dog:{f:'#f3e1c7', d:'#c98a52', in:'#c98a52'}, horse:{f:'#c98a52', d:'#8a5a32', in:'#f0d2b0'}}[kind];
+  const mood = o.mood || 'happy';
+  let ears = '', extra = '', muzzle = '', front = '';
+  if (kind === 'rabbit') ears = [[-10,72],[10,128]].map(([r,x]) => `<g transform="rotate(${r} ${x} 60)"><ellipse cx="${x}" cy="18" rx="17" ry="44" fill="${C.f}" ${TS}/><ellipse cx="${x}" cy="22" rx="8" ry="32" fill="${C.in}"/></g>`).join('');
+  if (kind === 'bear')   ears = [52,148].map(x => `<circle cx="${x}" cy="54" r="22" fill="${C.f}" ${TS}/><circle cx="${x}" cy="54" r="11" fill="${C.in}"/>`).join('');
+  if (kind === 'mouse')  ears = [42,158].map(x => `<circle cx="${x}" cy="56" r="34" fill="${C.f}" ${TS}/><circle cx="${x}" cy="56" r="21" fill="${C.in}"/>`).join('');
+  if (kind === 'cat')    ears = `<path d="M50 74Q42 26 62 20Q80 34 90 54Z" fill="${C.f}" ${TS}/><path d="M150 74Q158 26 138 20Q120 34 110 54Z" fill="${C.f}" ${TS}/><path d="M57 64Q54 40 63 34Q72 44 78 56Z" fill="#ffc2d4"/><path d="M143 64Q146 40 137 34Q128 44 122 56Z" fill="#ffc2d4"/>`;
+  if (kind === 'dog')    ears = `<path d="M54 58Q18 64 28 116Q34 128 50 118Q54 96 64 72Z" fill="${C.d}" ${TS}/><path d="M146 58Q182 64 172 116Q166 128 150 118Q146 96 136 72Z" fill="${C.d}" ${TS}/>`;
+  if (kind === 'horse')  ears = `<path d="M64 60L58 22L82 48Z M136 60L142 22L118 48Z" fill="${C.f}" ${TS}/><path d="M80 44Q100 20 124 44Q110 40 100 52Q92 40 80 44Z" fill="#6e4a2f" ${TS}/>`;
+  if (kind === 'mouse') extra = `<path d="M140 176Q192 180 184 136" stroke="${C.d}" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+  if (kind === 'rabbit') extra = `<circle cx="146" cy="176" r="15" fill="#fff" ${TS}/>`;
+  if (kind === 'cat') extra = `<path d="M142 170Q190 168 178 124" stroke="${TK}" stroke-width="20" fill="none" stroke-linecap="round"/><path d="M142 170Q190 168 178 124" stroke="${C.f}" stroke-width="13" fill="none" stroke-linecap="round"/>`;
+  if (kind === 'dog') extra = `<path d="M140 166Q168 154 166 128" stroke="${TK}" stroke-width="18" fill="none" stroke-linecap="round"/><path d="M140 166Q168 154 166 128" stroke="${C.f}" stroke-width="11" fill="none" stroke-linecap="round"/>`;
+  const big = kind === 'bear' || kind === 'horse' || kind === 'dog';
+  muzzle = kind === 'bear' ? `<ellipse cx="100" cy="114" rx="26" ry="19" fill="${C.in}" ${TS}/><ellipse cx="100" cy="104" rx="10" ry="7" fill="#3b2a20"/>`
+         : kind === 'horse' ? `<ellipse cx="100" cy="118" rx="32" ry="22" fill="${C.in}" ${TS}/><ellipse cx="88" cy="118" rx="4" ry="5" fill="#6e4a2f"/><ellipse cx="112" cy="118" rx="4" ry="5" fill="#6e4a2f"/>`
+         : kind === 'dog' ? `<ellipse cx="100" cy="114" rx="24" ry="17" fill="#fffaf2"/><ellipse cx="100" cy="105" rx="9" ry="6.5" fill="#3b2a20"/>`
+         : `<path d="M94 104H106L100 110Z" fill="#ff8fb1" stroke="${TK}" stroke-width="2" stroke-linejoin="round"/>` + (kind === 'cat' || kind === 'mouse' ? `<path d="M68 110L46 106M68 116L48 120M132 110L154 106M132 116L152 120" stroke="${TK}" stroke-width="1.6" opacity=".45" stroke-linecap="round"/>` : '');
+  const mouthY = kind === 'horse' ? 132 : kind === 'bear' || kind === 'dog' ? 122 : 114;
+  const mouth = mood === 'sad' ? `<path d="M90 ${mouthY+6}Q100 ${mouthY-2} 110 ${mouthY+6}" stroke="${TK}" stroke-width="3" fill="none" stroke-linecap="round"/>`
+              : mood === 'joy' ? `<path d="M88 ${mouthY}Q100 ${mouthY+18} 112 ${mouthY}Z" fill="#c45a63" stroke="${TK}" stroke-width="2.5" stroke-linejoin="round"/>`
+              : `<path d="M90 ${mouthY}Q100 ${mouthY+10} 110 ${mouthY}" stroke="${TK}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  const teeth = kind === 'rabbit' && mood !== 'sad' ? `<rect x="94" y="${mouthY+1}" width="12" height="9" rx="2" fill="#fff" stroke="${TK}" stroke-width="2"/>` : '';
+  const acc = o.acc === 'bow' ? `<g transform="translate(132 58)"><path d="M0 0L-18 -11V11ZM0 0L18 -11V11Z" fill="#ff6fa8" ${TS}/><circle r="6" fill="#ff6fa8" ${TS}/></g>`
+            : o.acc === 'scarf' ? `<path d="M56 140Q100 158 144 140L146 154Q100 174 54 154Z" fill="#4cb963" ${TS}/><path d="M122 154L130 184L116 182Z" fill="#4cb963" ${TS}/>`
+            : o.acc === 'flower' ? `<g transform="translate(64 50)">${[0,72,144,216,288].map(a => `<ellipse cx="0" cy="-9" rx="6" ry="9" fill="#fff" stroke="${TK}" stroke-width="2" transform="rotate(${a})"/>`).join('')}<circle r="5" fill="#ffd23f" stroke="${TK}" stroke-width="2"/></g>` : '';
+  const plaster = o.sick ? `<g transform="rotate(-25 70 62)"><rect x="50" y="54" width="40" height="15" rx="6" fill="#ffe0b8" stroke="${TK}" stroke-width="2"/><path d="M66 58V66M74 58V66" stroke="#e0b48a" stroke-width="2"/></g>` + (o.mood === 'sad' ? `<path d="M64 108Q60 116 64 120Q68 116 64 108Z" fill="#7cc4ff"/>` : '') : '';
+  const headRx = big ? 58 : 56;
+  return `<svg viewBox="0 -30 200 232" xmlns="http://www.w3.org/2000/svg" class="pet">
+    ${extra}
+    <ellipse cx="100" cy="158" rx="46" ry="40" fill="${C.f}" ${TS}/><ellipse cx="100" cy="166" rx="26" ry="24" fill="#fff" opacity=".45"/>
+    <ellipse cx="80" cy="190" rx="16" ry="10" fill="${C.f}" ${TS}/><ellipse cx="120" cy="190" rx="16" ry="10" fill="${C.f}" ${TS}/>
+    ${ears}
+    <ellipse cx="100" cy="94" rx="${headRx}" ry="${kind === 'horse' ? 54 : 48}" fill="${C.f}" ${TS}/>
+    ${eyesHTML(mood === 'joy' ? 'joy' : mood === 'sad' ? 'sad' : 'happy', false, '#6e4a2f')}
+    <ellipse cx="62" cy="116" rx="9" ry="5.5" fill="#f4a0a8" opacity=".6"/><ellipse cx="138" cy="116" rx="9" ry="5.5" fill="#f4a0a8" opacity=".6"/>
+    ${muzzle}${mouth}${teeth}${acc}${plaster}
+  </svg>`;
+}
+function birdSVG(o = {}){
+  return `<svg viewBox="0 -30 200 232" xmlns="http://www.w3.org/2000/svg" class="pet">
+    <path d="M150 150L190 132L184 170Z" fill="#4f9be0" ${TS}/>
+    <circle cx="100" cy="128" r="66" fill="#7cc4ff" ${TS}/><ellipse cx="100" cy="150" rx="40" ry="36" fill="#e6f4ff"/>
+    <path d="M150 128Q172 150 150 176Q132 160 136 136Z" fill="#4f9be0" ${TS}/>
+    <path d="M84 60Q92 40 104 52Q112 36 120 58" stroke="${TK}" stroke-width="3" fill="#4f9be0"/>
+    <g transform="translate(0 16)">${eyesHTML(o.mood === 'joy' ? 'joy' : o.mood === 'sad' ? 'sad' : 'happy', false, '#3b2a20')}</g>
+    <path d="M88 124L112 124L100 142Z" fill="#ffb347" ${TS}/>
+    <path d="M84 196V206M116 196V206M78 206H90M110 206H122" stroke="#ff9f43" stroke-width="4" stroke-linecap="round"/>
+    ${o.sick ? `<g transform="rotate(-25 70 80)"><rect x="50" y="72" width="40" height="15" rx="6" fill="#ffe0b8" stroke="${TK}" stroke-width="2"/></g>` : ''}
+  </svg>`;
+}
+function fishPatientSVG(o = {}){
+  return `<svg viewBox="0 -30 200 232" xmlns="http://www.w3.org/2000/svg" class="pet">
+    <path d="M30 196Q30 140 100 136Q170 140 170 196Z" fill="#bfe6ff" ${TS}/>
+    <path d="M150 104L190 76V132Z" fill="#ff9f43" ${TS}/>
+    <path d="M74 64Q100 34 126 66Z" fill="#ffd23f" ${TS}/>
+    <ellipse cx="100" cy="104" rx="62" ry="44" fill="#ff9f43" ${TS}/>
+    <g transform="translate(-20 4) scale(.9)">${eyesHTML(o.mood === 'joy' ? 'joy' : o.mood === 'sad' ? 'sad' : 'happy', false, '#3b2a20')}</g>
+    <path d="M60 124Q72 134 86 128" stroke="#7a3a10" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    ${o.sick ? `<g transform="rotate(-20 120 80)"><rect x="100" y="72" width="40" height="15" rx="6" fill="#ffe0b8" stroke="${TK}" stroke-width="2"/></g>` : ''}
+  </svg>`;
+}
+const PATIENTS = {cat:o => animalSVG('cat', o), dog:o => animalSVG('dog', o), mouse:o => animalSVG('mouse', o), horse:o => animalSVG('horse', o), bird:birdSVG, fish:fishPatientSVG};
+
+/* Vera the vet */
+function vetSVG(o = {}){
+  const S = '#f2c7a5', H = '#7a4a2a', LINE = '#aab4bf';
+  const arm = (x0, x1, y1) => `<path d="M${x0} 112L${x1} ${y1}" stroke="${LINE}" stroke-width="23" stroke-linecap="round"/><path d="M${x0} 112L${x1} ${y1}" stroke="#fff" stroke-width="18" stroke-linecap="round"/><circle cx="${x1}" cy="${y1 + (y1 < 100 ? -6 : 6)}" r="10" fill="${S}"/>`;
+  const arms = o.up ? arm(66,46,40) + arm(134,154,40) : arm(66,54,166) + arm(134,146,166);
+  return `<svg viewBox="0 0 200 252" xmlns="http://www.w3.org/2000/svg">
+    <rect x="76" y="168" width="22" height="66" rx="9" fill="#3d5a99"/><rect x="102" y="168" width="22" height="66" rx="9" fill="#3d5a99"/>
+    <ellipse cx="85" cy="240" rx="17" ry="8" fill="#e74c3c"/><ellipse cx="115" cy="240" rx="17" ry="8" fill="#e74c3c"/>
+    <path d="M140 46Q170 50 160 92Q154 70 138 66Z" fill="${H}"/>${arms}
+    <rect x="90" y="88" width="20" height="16" fill="${S}"/>
+    <path d="M62 120Q62 100 84 100H116Q138 100 138 120V196H62Z" fill="#fff" stroke="${LINE}" stroke-width="3"/>
+    <path d="M86 100L100 128L114 100" fill="#8fd3c7" stroke="${LINE}" stroke-width="2.5"/><path d="M100 128V196" stroke="${LINE}" stroke-width="2.5"/>
+    <path d="M84 104Q76 136 98 144Q120 136 116 104" stroke="#444" stroke-width="3.5" fill="none"/><circle cx="98" cy="146" r="6.5" fill="#9aa6b1" stroke="#444" stroke-width="2.5"/>
+    <circle cx="64" cy="64" r="8" fill="${S}"/><circle cx="136" cy="64" r="8" fill="${S}"/><circle cx="100" cy="60" r="36" fill="${S}"/>
+    <path d="M62 60Q60 22 100 22Q140 22 138 60Q126 38 104 40Q84 40 62 60Z" fill="${H}"/>
+    <circle cx="86" cy="62" r="4.5" fill="#2b1d15"/><circle cx="114" cy="62" r="4.5" fill="#2b1d15"/><circle cx="84.5" cy="60.5" r="1.5" fill="#fff"/><circle cx="112.5" cy="60.5" r="1.5" fill="#fff"/>
+    <circle cx="76" cy="74" r="6" fill="#ff8a8a" opacity=".35"/><circle cx="124" cy="74" r="6" fill="#ff8a8a" opacity=".35"/>
+    <path d="M88 76Q100 88 112 76" stroke="#8a3a2a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  </svg>`;
+}
+
+/* ---------- houses ---------- */
+const HOUSE = {
+  home: () => `<svg viewBox="0 0 120 104"><rect x="82" y="14" width="11" height="24" fill="#c98a52" ${TS}/><rect x="18" y="46" width="84" height="54" rx="4" fill="#fff4e0" ${TS}/><path d="M6 50L60 8L114 50Z" fill="#e8705a" ${TS}/><rect x="50" y="66" width="20" height="34" rx="3" fill="#9b6a4a" ${TS}/><circle cx="65" cy="84" r="2" fill="#ffd23f"/><rect x="25" y="58" width="18" height="16" rx="2" fill="#bfe6ff" ${TS}/><rect x="77" y="58" width="18" height="16" rx="2" fill="#bfe6ff" ${TS}/><path d="M34 58V74M25 66H43M86 58V74M77 66H95" stroke="${TK}" stroke-width="2"/><path d="M60 26a5 5 0 0 1 8 6l-8 7-8-7a5 5 0 0 1 8-6Z" fill="#ff7aa8"/></svg>`,
+  vet: () => `<svg viewBox="0 0 120 104"><rect x="12" y="40" width="96" height="60" rx="4" fill="#fff" ${TS}/><path d="M4 44H116L106 26H14Z" fill="#4fc1b0" ${TS}/><rect x="36" y="4" width="48" height="24" rx="5" fill="#fff" ${TS}/><path d="M60 8V24M52 16H68" stroke="#e74c3c" stroke-width="5"/><rect x="46" y="62" width="28" height="38" fill="#bfe6ff" ${TS}/><path d="M60 62V100" stroke="${TK}" stroke-width="2"/><rect x="20" y="54" width="20" height="18" rx="2" fill="#bfe6ff" ${TS}/><rect x="80" y="54" width="20" height="18" rx="2" fill="#bfe6ff" ${TS}/><g transform="translate(30 88)" fill="#ff8fb1"><circle r="5"/><circle cx="-5" cy="-7" r="2.6"/><circle cx="0" cy="-9" r="2.6"/><circle cx="5" cy="-7" r="2.6"/></g><g transform="translate(90 88)" fill="#ff8fb1"><circle r="5"/><circle cx="-5" cy="-7" r="2.6"/><circle cx="0" cy="-9" r="2.6"/><circle cx="5" cy="-7" r="2.6"/></g></svg>`,
+  burrow: () => `<svg viewBox="0 0 120 104"><path d="M4 100Q4 26 60 22Q116 26 116 100Z" fill="#8fd36a" ${TS}/><path d="M22 52l4-8 4 8M90 40l4-8 4 8M50 30l4-8 4 8" stroke="#4f9a36" stroke-width="2.5" fill="none"/><path d="M40 100V72Q40 54 60 54Q80 54 80 72V100Z" fill="#ff8fb1" ${TS}/><circle cx="74" cy="80" r="2.4" fill="${TK}"/><circle cx="96" cy="68" r="9" fill="#bfe6ff" ${TS}/>${[[18,94],[28,96]].map(([x,y]) => `<path d="M${x} ${y}L${x-4} ${y-18}L${x+4} ${y-18}Z" fill="#ff9f43" stroke="${TK}" stroke-width="2"/><path d="M${x-3} ${y-18}l-3 -7M${x} ${y-18}v-8M${x+3} ${y-18}l3 -7" stroke="#4cb963" stroke-width="2.5"/>`).join('')}<circle cx="34" cy="44" r="4" fill="#fff"/><circle cx="84" cy="34" r="4" fill="#ffd23f"/></svg>`,
+  cabin: () => `<svg viewBox="0 0 120 104"><rect x="14" y="46" width="92" height="54" fill="#b07a4a" ${TS}/><path d="M16 56H104M16 66H104M16 76H104M16 86H104" stroke="#8a5a32" stroke-width="2.5"/><path d="M4 50L60 10L116 50Z" fill="#7a4a2a" ${TS}/><rect x="50" y="66" width="20" height="34" rx="2" fill="#6e4a2f" ${TS}/><rect x="22" y="58" width="20" height="16" rx="2" fill="#ffe9a8" ${TS}/><path d="M32 58V74" stroke="${TK}" stroke-width="2"/><path d="M84 88Q80 100 90 100H102Q112 100 108 88Z" fill="#f7c948" ${TS}/><rect x="84" y="82" width="24" height="7" rx="3" fill="#c98a52" ${TS}/><path d="M96 82Q96 92 92 94" stroke="#e0a800" stroke-width="3" fill="none"/></svg>`,
+  cheese: () => `<svg viewBox="0 0 120 104"><path d="M8 100V48L110 22V100Z" fill="#f7c948" ${TS}/><path d="M8 48L110 22" stroke="#e0b030" stroke-width="2"/>${[[26,62,6],[86,46,7],[94,80,5],[60,58,4]].map(([x,y,r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#e0b030"/>`).join('')}<path d="M44 100V82Q44 70 56 70Q68 70 68 82V100Z" fill="#ff8fb1" ${TS}/><circle cx="62" cy="88" r="2" fill="${TK}"/><circle cx="90" cy="66" r="8" fill="#bfe6ff" ${TS}/><circle cx="26" cy="86" r="7" fill="#bfe6ff" ${TS}/></svg>`
+};
+
+/* ---------- neighbours ---------- */
+const NB = {
+  rosie:{name:'Rosie', kind:'rabbit', acc:'bow', he:'she', house:'burrow', pos:[25,42], color:'pink', age:'six', toy:'kite', can:['jump',"I can jump! But I can't swim."], fav:'carrot', likes:['apple','icecream'], dislikes:['fish'], bg:'linear-gradient(#ffeef3 0 62%,#f6cfd9 62%)'},
+  bruno:{name:'Bruno', kind:'bear', acc:'scarf', he:'he', house:'cabin', pos:[76,35], color:'green', age:'eight', toy:'ball', can:['swim','I can swim! I like fish!'], fav:'honey', likes:['fish','apple'], dislikes:['carrot'], bg:'linear-gradient(#f6e6d0 0 62%,#d9b48a 62%)'},
+  mimi:{name:'Mimi', kind:'mouse', acc:'flower', he:'she', house:'cheese', pos:[50,64], color:'yellow', age:'five', toy:'robot', can:['sing','I can sing! La-la-la!'], fav:'cheese', likes:['cake','banana'], dislikes:['fish'], bg:'linear-gradient(#fff7d6 0 62%,#f1dc9c 62%)'}
+};
+const nbSVG = (id, o = {}) => animalSVG(NB[id].kind, Object.assign({acc:NB[id].acc}, o));
+const FR_STEPS = [5, 15, 35];   /* points for: new friend → friend → best friend (each bar slower) */
+const FR_NAMES = [['😊','New friends','знакомые'],['🤝','Friends','друзья'],['💖','Best friends','лучшие друзья']];
+function fr(id){ P.friends = P.friends || {}; return P.friends[id] = P.friends[id] || {pts:0, d:{}}; }
+function frLevel(id){ let p = fr(id).pts, l = 0; for (const s of FR_STEPS){ if (p >= s){ p -= s; l++; } else break; } return l; }
+function frBars(id){
+  let p = fr(id).pts;
+  return FR_STEPS.map((s,i) => { const v = Math.max(0, Math.min(s, p)); p -= s; const [ic,en,ru] = FR_NAMES[i];
+    return `<div class="fbar ${v >= s ? 'done' : ''}"><span>${ic} ${en}<small>${ru}</small></span><div class="bar"><i style="width:${v/s*100}%;background:${['#ffb3c7','#8ccfa4','#ff7aa8'][i]}"></i></div></div>`; }).join('');
+}
+const doneToday = (id, what) => fr(id).d[what] === todayStr();
+function addFriend(id, what, n){
+  const f = fr(id); if (f.d[what] === todayStr()) return 0;
+  f.d[what] = todayStr();
+  const before = frLevel(id); f.pts += n; const after = frLevel(id); save();
+  if (after > before) celebrate(id, after);
+  return n;
+}
+function celebrate(id, after){
+  {
+    const N = NB[id], [ic,en] = FR_NAMES[after-1];
+    const bonus = [10, 25, 50][after-1]; P.coins += bonus; save();
+    modal(`<div class="mp">${nbSVG(id,{mood:'joy'})}</div><h2>${ic} ${en}!</h2><p ${sayA(after === 3 ? `You are my best friend, ${P.name}!` : after === 2 ? `We are friends now!` : `Nice to meet you, ${P.name}!`, true)}>${after === 3 ? `${N.name}: “You are my best friend!” 💖` : after === 2 ? `${N.name} and you are friends now! 🤝` : `You and ${N.name} know each other now! 😊`} 🔊</p>
+      <div class="rewards"><span>+${bonus} 🪙</span></div>${after === 1 ? '<p class="note">New game: Memory! 🃏</p>' : after === 2 ? '<p class="note">New game: Hide and seek! 🙈</p>' : ''}
+      <button class="btn" id="frOk" style="width:100%">Yay! 💛</button>`, () => { sfx.win(); confetti(['💖','⭐','🤝','✨']); say(after === 3 ? `You are my best friend, ${P.name}!` : after === 2 ? 'We are friends now!' : `Nice to meet you, ${P.name}!`, true); $('#frOk').onclick = () => { closeModal(); if (TOWN === id) visit(id); }; });
+  }
+}
+
+/* ---------- vet clinic opens when the child learns the pets words ---------- */
+const VET_PACKS = ['kb4', 'k2u7'];
+const VET_WORDS = new Set(VET_PACKS.flatMap(id => (packById(id) || {words:[]}).words.filter(w => !w.ph).map(w => w.en)));
+function vetProgress(){ const got = new Set(); Object.entries(P.m || {}).forEach(([k,m]) => { const w = k.slice(k.indexOf('|')+1); if (m.ok >= 1 && VET_WORDS.has(w)) got.add(w); }); return got.size; }
+const VET_NEED = 4;
+const vetOpen = () => vetProgress() >= VET_NEED;
+
+/* ---------- presents ---------- */
+const GIFTS = {
+  apple:['apple','яблоко',`<svg viewBox="0 0 100 100"><path d="M50 30Q50 14 62 8" stroke="${TK}" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M54 22Q70 8 82 18Q70 30 54 22Z" fill="#4cb963" ${TS}/><path d="M50 32Q30 20 18 38Q8 60 24 80Q38 98 50 88Q62 98 76 80Q92 60 82 38Q70 20 50 32Z" fill="#e74c3c" ${TS}/><ellipse cx="32" cy="48" rx="5" ry="9" fill="#fff" opacity=".5" transform="rotate(20 32 48)"/></svg>`],
+  banana:['banana','банан',`<svg viewBox="0 0 100 100"><path d="M18 30Q20 78 64 82Q86 82 90 70Q60 74 42 56Q30 42 30 26Z" fill="#ffd23f" ${TS}/><path d="M18 30L22 18L32 24L30 28Z" fill="#8a6a2a" ${TS}/><path d="M34 46Q46 66 76 74" stroke="#e0b030" stroke-width="3" fill="none"/></svg>`],
+  carrot:['carrot','морковка',`<svg viewBox="0 0 100 100"><path d="M46 26Q38 8 30 6M52 24Q52 6 58 2M58 28Q70 12 80 12" stroke="#4cb963" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M36 30Q50 20 66 30L54 94Q50 98 46 92Z" fill="#ff9f43" ${TS}/><path d="M42 44H52M46 60H56M48 76H54" stroke="#d9782a" stroke-width="3" stroke-linecap="round"/></svg>`],
+  cake:['cake','торт',`<svg viewBox="0 0 100 100"><path d="M50 10Q56 18 50 24Q44 18 50 10Z" fill="#ffb347"/><rect x="47" y="24" width="6" height="14" fill="#5aa9e6"/><rect x="16" y="38" width="68" height="50" rx="8" fill="#ffd6e0" ${TS}/><path d="M16 50Q26 60 33 50Q41 60 50 50Q59 60 67 50Q75 60 84 50" stroke="#fff" stroke-width="6" fill="none"/><rect x="16" y="66" width="68" height="8" fill="#ff8fb1"/><circle cx="34" cy="38" r="5" fill="#e74c3c" ${TS}/><circle cx="66" cy="38" r="5" fill="#e74c3c" ${TS}/></svg>`],
+  cheese:['cheese','сыр',`<svg viewBox="0 0 100 100"><path d="M8 78V50L90 28V78Z" fill="#f7c948" ${TS}/><path d="M8 50L62 18L90 28" fill="#ffe27a" ${TS}/>${[[24,62,5],[56,56,7],[76,68,4]].map(([x,y,r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#e0b030"/>`).join('')}</svg>`],
+  honey:['honey','мёд',`<svg viewBox="0 0 100 100"><path d="M24 34Q14 60 22 82Q28 94 50 94Q72 94 78 82Q86 60 76 34Z" fill="#f7c948" ${TS}/><rect x="20" y="24" width="60" height="14" rx="5" fill="#c98a52" ${TS}/><path d="M34 38Q34 54 40 56Q44 52 44 38" fill="#e0a800"/><rect x="34" y="58" width="32" height="18" rx="3" fill="#fff6d6" stroke="${TK}" stroke-width="2"/><text x="50" y="71" text-anchor="middle" font-size="9" font-weight="800" fill="#8a5a00" font-family="Nunito,sans-serif">HONEY</text></svg>`],
+  fish:['fish','рыба',`<svg viewBox="0 0 100 100"><path d="M74 50L94 34V66Z" fill="#5aa9e6" ${TS}/><ellipse cx="46" cy="50" rx="34" ry="22" fill="#7cc4ff" ${TS}/><circle cx="28" cy="46" r="4" fill="${TK}"/><path d="M48 32Q56 50 48 68M60 34Q66 50 60 66" stroke="#bfe3ff" stroke-width="3" fill="none"/></svg>`],
+  icecream:['ice cream','мороженое',`<svg viewBox="0 0 100 100"><path d="M30 50L50 96L70 50Z" fill="#e8b46b" ${TS}/><path d="M38 58L60 72M44 76L56 64" stroke="#c98a52" stroke-width="2.5"/><circle cx="38" cy="44" r="15" fill="#ffd6e0" ${TS}/><circle cx="62" cy="44" r="15" fill="#cdeee0" ${TS}/><circle cx="50" cy="28" r="15" fill="#fff4c2" ${TS}/><circle cx="50" cy="14" r="5" fill="#e74c3c" ${TS}/></svg>`]
+};
+
+/* ---------- the map ---------- */
+const PLACES = () => [
+  {id:'home', name:'My house', house:'home', pos:[22,88]},
+  {id:'vet', name:'Vet clinic', house:'vet', pos:[77,85], locked:!vetOpen()},
+  ...Object.entries(NB).map(([id,N]) => ({id, name:N.name, house:N.house, pos:N.pos, nb:true}))
+];
+function mapGround(){
+  return `<svg class="ground" viewBox="0 0 100 115" preserveAspectRatio="none">
+    <rect width="100" height="115" style="fill:var(--grass,#bfe3a0)"/>
+    <ellipse cx="12" cy="70" rx="10" ry="6" style="fill:var(--pond,#8fd6ea)" stroke="${TK}" stroke-width=".6"/>
+    ${[[30,16],[52,10],[88,62],[8,24],[62,96],[94,12],[40,104]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="4.2" style="fill:var(--tree,#7fbf72)" stroke="${TK}" stroke-width=".6"/><rect x="${x-.7}" y="${y+3.6}" width="1.4" height="3" fill="#8a5a32"/>`).join('')}
+    <g fill="none" stroke-linecap="round"><path id="road" d="M22 101Q36 92 50 76M77 97Q64 90 50 76M50 74Q36 64 25 48M50 74Q64 56 76 40" style="stroke:var(--road2,#d8b98a)" stroke-width="7.4"/>
+    <path d="M22 101Q36 92 50 76M77 97Q64 90 50 76M50 74Q36 64 25 48M50 74Q64 56 76 40" style="stroke:var(--road,#f1dcb0)" stroke-width="6"/></g>
+    ${[[16,58],[84,52],[40,30],[60,22],[90,104],[6,98]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="1.2" fill="#ff8fb1"/><circle cx="${x+2}" cy="${y+1}" r="1.2" fill="#fff"/>`).join('')}
+  </svg>`;
+}
+function town(){
+  TOWN = true; A = null;
+  setChip(`🗺️ Town · ${P.name}`);
+  if (vetOpen() && !P.vetSeen){ P.vetSeen = 1; save();
+    later(() => modal(`<div class="mp" style="width:120px">${vetSVG({up:true})}</div><h2>The vet clinic is open! 🎉</h2><p ${sayA('Hello! I am Vera, the vet. Come in!', true)}>Vera the vet: “Hello! Come in!” 🔊</p><p class="note">Ты выучил слова про животных — клиника открылась!</p><button class="btn" id="vOk" style="width:100%">Great! 🩺</button>`, () => { sfx.win(); confetti(['🐾','❤️','⭐']); say('Hello! I am Vera, the vet. Come in!', true); $('#vOk').onclick = closeModal; }), 400); }
+  const places = PLACES();
+  view(`<div class="row" style="justify-content:space-between"><button class="back" id="bk">← My room</button><span class="pill">🪙 ${P.coins}</span></div>
+    <div class="h2">Town</div>
+    <div class="map" id="map">${mapGround()}${isSnow() ? SNOW : ''}
+      ${places.map(pl => { const lv = pl.nb ? frLevel(pl.id) : 0;
+        return `<button class="house ${pl.locked ? 'locked' : ''}" data-p="${pl.id}" style="left:${pl.pos[0]}%;top:${pl.pos[1]}%">${HOUSE[pl.house]()}<span class="hl">${pl.locked ? '🔒 ' : ''}${esc(pl.name)}${pl.nb ? ` <small>${'💗'.repeat(lv)}${'♡'.repeat(3-lv)}</small>` : ''}</span></button>`; }).join('')}
+      <div class="mapPet" id="mapPet" style="left:38%;top:99%">${myPet()}</div>
+    </div>
+    <p class="sub center">Tap a house! Visit your friends every day 💗</p>`);
+  $('#bk').onclick = () => { sfx.click(); TOWN = false; renderHome(); };
+  $$('.house').forEach(b => b.onclick = () => {
+    const pl = places.find(x => x.id === b.dataset.p); sfx.click();
+    const mp = $('#mapPet'); mp.style.left = (pl.pos[0] + 9) + '%'; mp.style.top = (pl.pos[1] + 2) + '%';
+    later(() => {
+      if (pl.id === 'home'){ TOWN = false; renderHome(); }
+      else if (pl.id === 'vet') pl.locked ? vetLocked() : clinic();
+      else visit(pl.id);
+    }, 900);
+  });
+}
+function vetLocked(){
+  const n = vetProgress();
+  modal(`<div style="width:110px">${HOUSE.vet()}</div><h2>🔒 The clinic is closed</h2>
+    <p>Learn the pet words to open it!</p><p class="note">Чтобы открыть ветклинику, выучи слова про животных: набор «Unit 4: Our pets» (Kid's Box 1) или «KB2 Unit 7: At the farm». Выучено: <b>${Math.min(n, VET_NEED)} / ${VET_NEED}</b></p>
+    <div class="rewards"><span>🐾 ${Math.min(n, VET_NEED)} / ${VET_NEED}</span></div>
+    <div class="mrow"><button class="btn white" id="lkNo">OK</button><button class="btn" id="lkGo">📚 Pet words</button></div>`, () => {
+      $('#lkNo').onclick = closeModal;
+      $('#lkGo').onclick = () => { closeModal(); P.packId = 'kb4'; save(); TOWN = false; home(P.id); toast('📦 Unit 4: Our pets — play Feed or Practice!'); };
+    });
+}
+
+/* ---------- a neighbour's house ---------- */
+function nbScene(id, o = {}){
+  const N = NB[id];
+  return `<div class="scene inside" style="background:${N.bg}">
+    <div class="bubble" id="nbSay" style="top:4%">${o.line || ''}</div>
+    <div class="nb" id="nbBox">${nbSVG(id, {mood:o.mood || 'happy'})}</div>
+    <div class="mini">${myPet()}</div>
+    ${o.extra || ''}
+  </div>`;
+}
+function nbTalk(text, mood){ const b = $('#nbSay'); if (b){ b.textContent = text; anim(b, 'pop'); } if (mood && $('#nbBox')) $('#nbBox').innerHTML = nbSVG(TOWN, {mood}); say(text.replace(/[^\x20-\x7E]/g,''), true); }
+function visit(id){
+  TOWN = id; A = null;
+  const N = NB[id], first = fr(id).pts === 0;
+  const lv0 = frLevel(id);
+  if (!doneToday(id, 'visit')){ fr(id).pts += 1; fr(id).d.visit = todayStr(); save(); }
+  const lv = frLevel(id);
+  if (lv > lv0) later(() => celebrate(id, lv), 900);
+  const greet = [first ? `Hello! I'm ${N.name}. What's your name?` : `Hello again! I'm ${N.name}!`, `Hi, ${P.name}! Come in!`, `Hello, my friend ${P.name}!`, `Yay! My best friend ${P.name}! I missed you!`][lv];
+  const games = [['ttt','❌⭕','Tic-tac-toe',0],['mem','🃏','Memory',1],['hide','🙈','Hide and seek',2]];
+  view(`<div class="row" style="justify-content:space-between"><button class="back" id="bk">← Town</button><span class="pill">🪙 ${P.coins}</span></div>
+    ${nbScene(id, {line:greet, mood:lv ? 'joy' : 'happy'})}
+    <div class="card fbars">${frBars(id)}<p class="note">Каждый день: зайти в гости, поговорить, подарить подарок и поиграть — так дружба растёт. ${doneToday(id,'talk') && doneToday(id,'gift') && doneToday(id,'game') ? '<b>Сегодня всё сделано — приходи завтра!</b>' : ''}</p></div>
+    <div class="acts" style="grid-template-columns:1fr 1fr">
+      <button class="act card" id="vTalk"><span>💬</span>Talk${doneToday(id,'talk') ? '' : '<i class="dot">+</i>'}</button>
+      <button class="act card" id="vGift"><span>🎁</span>Present${doneToday(id,'gift') ? '' : '<i class="dot">+</i>'}</button>
+    </div>
+    <div class="acts" style="grid-template-columns:repeat(3,1fr)">${games.map(([g,ic,t,need]) => `<button class="act card ${lv < need ? 'locked' : ''}" data-g="${g}" style="${lv < need ? 'opacity:.5' : ''}"><span>${ic}</span>${t}${lv < need ? `<small style="font-size:11px">🔒 ${FR_NAMES[need-1][1]}</small>` : ''}</button>`).join('')}</div>`);
+  later(() => say(greet, true), 300);
+  $('#bk').onclick = () => { sfx.click(); town(); };
+  $('#vTalk').onclick = () => { sfx.click(); talk(id); };
+  $('#vGift').onclick = () => { sfx.click(); presents(id); };
+  $$('[data-g]').forEach(b => b.onclick = () => {
+    const g = games.find(x => x[0] === b.dataset.g);
+    if (lv < g[3]){ sfx.bad(); toast(`🔒 ${g[2]}: you must be ${FR_NAMES[g[3]-1][1].toLowerCase()} with ${N.name}`); return; }
+    sfx.click(); ({ttt:tictactoe, mem:memory, hide:hideSeek})[g[0]](id);
+  });
+}
+
+/* ---------- talking ---------- */
+const art = w => /^[aeiou]/i.test(w) ? 'an' : 'a';
+function talkQs(id){
+  const N = NB[id], lv = frLevel(id);
+  const ages = ['six','seven','eight','nine'];
+  const food = rnd(['apples','bananas','cake','ice cream','milk','fish','chocolate']);
+  const Q = {
+    name: () => ({q:"What's your name?", a:[[`My name is ${P.name}.`, `Nice to meet you, ${P.name}!`, 1],["I'm seven.", 'Hmm? I asked your name! 🙂'],['Blue!', 'Hmm? Your name, please! 🙂']]}),
+    age: () => ({q:'How old are you?', a:[...shuffle(ages).slice(0,2).map(x => [`I'm ${x}.`, `Cool! I'm ${N.age}!`, 1]), [`My name is ${P.name}.`, 'Hmm? How old are you? 🙂']]}),
+    colour: () => ({q:"What's your favourite colour?", a:[...shuffle(['Red.','Blue.','Green.','Pink.','Yellow.','Purple.']).slice(0,2).map(x => [x, `Nice! My favourite colour is ${N.color}!`, 1]), ["I'm fine.", 'Hmm? A colour, please! 🙂']]}),
+    like: () => ({q:`Do you like ${food}?`, a:[['Yes, I do.', `Me too! Yummy!`, 1],["No, I don't.", `Oh! OK!`, 1],["I'm eight.", 'Hmm? Do you like it? 🙂']]}),
+    pet: () => ({q:'Have you got a pet?', a:[[`Yes, I have. It's ${P.pet.name}!`, `Hello, ${P.pet.name}! 👋`, 1],["No, I haven't.", `But I can see ${P.pet.name}! 😄`, 1],['It is red.', 'Hmm? Have you got a pet? 🙂']]}),
+    can: () => ({q:`Can you ${N.can[0]}?`, a:[['Yes, I can.', N.can[1], 1],["No, I can't.", N.can[1], 1],['Blue.', `Hmm? Can you ${N.can[0]}? 🙂`]]}),
+    what: () => { const pool = PACK.words.filter(w => !w.ph && hasPic(w) && w.en.length < 14); const it = rnd(pool.length >= 3 ? pool : ALL_KB.filter(w => !w.ph && hasPic(w)));
+      const pl = /s$/.test(it.en) && !/(bus|glass|dress)$/.test(it.en);
+      const others = distractors(it, 2, x => !x.ph && x.en.length < 14);
+      const say_ = w => pl ? `They're ${w.en}.` : `It's ${art(w.en)} ${w.en}.`;
+      return {q: pl ? 'What are these?' : "What's this?", pic:it, a:[[say_(it), `Yes! Well done!`, 1, it], ...others.map(o => [say_(o), 'No! Look again! 🙂'])]}; },
+    cold: () => ({q: isSnow() ? 'Is it cold today?' : 'Is it sunny today?', a:[['Yes, it is.', isSnow() ? 'Brrr! Put on your hat!' : 'Hooray! Let’s play outside!', 1],["No, it isn't.", 'OK! Let’s play!', 1],['Yes, I do.', 'Hmm? Is it? 🙂']]}),
+    toy: () => ({q:"What's your favourite toy?", a:[...shuffle(['ball','kite','robot','doll','car','train']).slice(0,2).map(t => [`My favourite toy is my ${t}.`, `I like my ${N.toy}!`, 1]), ["I'm happy.", 'Hmm? A toy, please! 🙂']]}),
+    family: () => ({q:'Have you got a brother or a sister?', a:[['Yes, I have.', 'Cool! I have got a little brother!', 1],["No, I haven't.", "Oh! I'm your friend!", 1],['It is a cat.', 'Hmm? 🙂']]}),
+    secret: () => ({q:'Can I tell you a secret? You are my best friend!', a:[['You are my best friend too!', 'Yay! Best friends forever! 💖', 1],['Thank you!', 'Hug! 🤗', 1]]})
+  };
+  const how = {q:'Hello! How are you?', a:[["I'm fine, thank you!", "Great! I'm fine too!", 1],["I'm happy!", 'Yay! Me too!', 1],["I'm sad.", 'Oh no! Here is a big hug! 🤗', 1]]};
+  const bye = {q:`Goodbye, ${P.name}! See you tomorrow!`, a:[['Goodbye!', 'Bye-bye! 👋', 1],['See you!', 'See you! 👋', 1]]};
+  const levels = [['name','age','colour'], ['like','pet','can','what'], ['cold','toy','family','what'], ['secret']];
+  let pool = []; for (let i = 0; i <= lv; i++) pool = pool.concat(levels[i]);
+  const first = fr(id).pts <= 2 ? ['name'] : [];
+  const pick = [...new Set([...first, ...shuffle(pool)])].slice(0, 2 + Math.min(lv, 2));
+  if (lv >= 3 && !pick.includes('secret')) pick.push('secret');
+  return [how, ...pick.map(k => Q[k]()), bye];
+}
+function talk(id){
+  TOWN = id; const qs = talkQs(id); let i = 0;
+  const show = () => {
+    const q = qs[i];
+    const opts = shuffle(q.a);
+    main.innerHTML = `<div class="view"><div class="acttop"><button class="back" id="leave">← ${NB[id].name}</button><div class="pbar"><i style="width:${i/qs.length*100}%"></i></div><b>${i+1} / ${qs.length}</b></div>
+      ${nbScene(id, {line:q.q, extra: q.pic ? `<div style="position:absolute;right:5%;top:30%;width:22%;aspect-ratio:1;border-radius:16px;background:#fff;border:2.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12cqw">${picHTML(q.pic)}</div>` : ''})}
+      <div class="choices">${opts.map((o,k) => `<button class="choice" data-k="${k}">🗨️ ${esc(o[0])}</button>`).join('')}</div>
+      <p class="note center">Выбери ответ. Нажми на облачко, чтобы послушать вопрос ещё раз.</p></div>`;
+    $('#leave').onclick = () => { sfx.click(); visit(id); };
+    $('#nbSay').onclick = () => say(q.q, true);
+    later(() => say(q.q, true), 250);
+    let locked = false;
+    $$('.choice').forEach(b => b.onclick = () => {
+      if (locked) return;
+      const o = opts[+b.dataset.k]; say(o[0]);
+      if (o[2]){
+        locked = true; sfx.ok(); b.style.background = '#dff3e5';
+        later(() => nbTalk(o[1], 'joy'), 1300);
+        later(() => { i++; if (i < qs.length) show(); else talkEnd(id); }, 3300);
+      } else { sfx.bad(); b.classList.add('wrong'); anim(b,'shake'); later(() => nbTalk(o[1]), 900); }
+    });
+  };
+  show();
+}
+function talkEnd(id){
+  const got = addFriend(id, 'talk', 1); if (got){ P.coins += 5; save(); }
+  modal(`<div class="mp">${nbSVG(id,{mood:'joy'})}</div><h2>Nice talk! 💬</h2><p>${got ? `${NB[id].name} likes talking with you!` : 'You talked today already. Come back tomorrow!'}</p>
+    <div class="rewards">${got ? '<span>💗 +1</span><span>+5 🪙</span>' : '<span>💬</span>'}</div><button class="btn" id="tOk" style="width:100%">OK</button>`, () => { sfx.win(); $('#tOk').onclick = () => { closeModal(); visit(id); }; });
+  addXP(5);
+}
+
+/* ---------- presents ---------- */
+function presents(id){
+  TOWN = id; const N = NB[id];
+  if (doneToday(id, 'gift')){
+    view(`<button class="back" id="bk">← ${N.name}</button>${nbScene(id, {line:'Thank you for the present! See you tomorrow!', mood:'joy'})}<p class="sub center">Сегодня ты уже дарил подарок. Приходи завтра! 🎁</p>`);
+    later(() => say('Thank you for the present! See you tomorrow!', true), 250);
+    $('#bk').onclick = () => { sfx.click(); visit(id); }; return;
+  }
+  view(`<button class="back" id="bk">← ${N.name}</button>
+    ${nbScene(id, {line:`A present? For me? 😍`})}
+    <div class="h2" style="font-size:22px">Choose a present for ${N.name}</div>
+    <div class="giftgrid">${Object.entries(GIFTS).map(([g,[en,ru,svg]]) => `<button class="gift card" data-g="${g}" ${sayA(en)}>${svg}<span>${en}</span><small class="note">${ru}</small></button>`).join('')}</div>
+    <p class="note center">Подсказка: каждый любит своё! Спроси в разговоре или попробуй угадать 🙂</p>`);
+  later(() => say('A present? For me?', true), 250);
+  $('#bk').onclick = () => { sfx.click(); visit(id); };
+  $$('.gift').forEach(b => b.onclick = () => {
+    if (doneToday(id, 'gift')) return;
+    const g = b.dataset.g, en = GIFTS[g][0];
+    const pts = g === N.fav ? 3 : N.likes.includes(g) ? 2 : N.dislikes.includes(g) ? 0 : 1;
+    const plural = en === 'cheese' || en === 'honey' || en === 'fish' || en === 'cake' || en === 'ice cream' ? en : en + 's';
+    const line = pts === 3 ? `Wow! ${art(en) === 'an' ? 'An' : 'A'} ${en}! I love ${plural}! Thank you!` : pts === 2 ? `Thank you! I like ${plural}!` : pts === 1 ? `Thank you, ${P.name}!` : `Oh… I don't like ${plural}. But thank you!`;
+    flyTo(b.querySelector('svg'), $('#nbBox'));
+    fr(id).d.gift = '';   /* addFriend sets it */
+    addFriend(id, 'gift', pts); if (pts === 0) { fr(id).d.gift = todayStr(); save(); }
+    sfx[pts ? 'win' : 'bad']();
+    later(() => { nbTalk(line, pts ? 'joy' : 'sad'); if (pts >= 2) confetti(['💖','✨','⭐'], 14); }, 650);
+    $$('.gift').forEach(x => x.disabled = true);
+    later(() => { if (TOWN === id) visit(id); }, 4200);
+  });
+}
+
+/* ---------- vet clinic ---------- */
+function clinic(){
+  TOWN = 'vet';
+  const checked = P.vetDay === todayStr();
+  view(`<div class="row" style="justify-content:space-between"><button class="back" id="bk">← Town</button><span class="pill">🪙 ${P.coins}</span></div>
+    <div class="scene inside" style="background:linear-gradient(#e9fbf7 0 62%,#cdeee6 62%);background-size:auto">
+      <div class="bubble" id="nbSay" style="top:4%">Hello! I'm Vera, the vet. 🩺</div>
+      <div style="position:absolute;left:12%;bottom:3%;width:34%">${vetSVG()}</div>
+      <div style="position:absolute;right:10%;bottom:4%;width:32%">${myPet()}</div>
+      <div style="position:absolute;left:46%;top:30%;width:12%;line-height:0"><svg viewBox="0 0 60 60"><rect x="4" y="4" width="52" height="52" rx="10" fill="#fff" stroke="#4b3536" stroke-width="3"/><path d="M30 14V46M14 30H46" stroke="#e74c3c" stroke-width="9" stroke-linecap="round"/></svg></div>
+    </div>
+    <div class="acts" style="grid-template-columns:1fr 1fr">
+      <button class="act card" id="cHelp"><span>🩹</span>Help the animals</button>
+      <button class="act card" id="cCheck"><span>🩺</span>Check my pet${checked ? '' : '<i class="dot">+</i>'}</button>
+    </div>
+    <p class="note center">Помоги больным зверятам: узнай, кто пришёл, и вылечи их!</p>`);
+  later(() => say("Hello! I'm Vera, the vet.", true), 250);
+  $('#bk').onclick = () => { sfx.click(); town(); };
+  $('#cHelp').onclick = () => { sfx.click(); vetGame(); };
+  $('#cCheck').onclick = () => {
+    if (P.vetDay === todayStr()){ toast('✔ Your pet is healthy! Come back tomorrow.'); say('Your pet is healthy! See you tomorrow!', true); return; }
+    P.vetDay = todayStr(); NEEDS.forEach(([k]) => P.stats[k] = clamp(P.stats[k] + 15, 0, 100)); P.coins += 5; save();
+    modal(`<div style="display:flex;gap:8px;width:220px">${vetSVG({up:true})}${myPet({mood:'joy'})}</div><h2>Healthy and happy! 🩺</h2><p ${sayA(`${P.pet.name} is healthy! Good job!`, true)}>Vera: “${esc(P.pet.name)} is healthy! Good job!” 🔊</p>
+      <div class="rewards"><span>❤️ +15</span><span>+5 🪙</span></div><button class="btn" id="hOk" style="width:100%">Thank you! 💛</button>`, () => { sfx.win(); say(`${P.pet.name} is healthy! Good job!`, true); $('#hOk').onclick = () => { closeModal(); clinic(); }; });
+  };
+}
+function vetGame(){
+  TOWN = 'vet';
+  const kinds = shuffle(Object.keys(PATIENTS)).slice(0, 5); let i = 0, score = 0;
+  const round = () => {
+    clearTimers();
+    const k = kinds[i], opts = shuffle([k, ...shuffle(Object.keys(PATIENTS).filter(x => x !== k)).slice(0,2)]);
+    let step = 0, taps = 0, miss = false;
+    main.innerHTML = `<div class="view"><div class="acttop"><button class="back" id="leave">← Clinic</button><div class="pbar"><i style="width:${i/kinds.length*100}%"></i></div><b>${i+1} / ${kinds.length}</b></div>
+      <div class="scene inside" style="background:linear-gradient(#e9fbf7 0 62%,#cdeee6 62%)">
+        <div class="bubble" id="nbSay" style="top:4%">Who is this?</div>
+        <div style="position:absolute;left:2%;bottom:3%;width:30%">${vetSVG()}</div>
+        <div style="position:absolute;left:30%;right:6%;bottom:6%;height:7%;border-radius:2cqw;background:#fff;border:2.5px solid var(--line)"></div>
+        <button id="pat" style="position:absolute;left:62%;bottom:12%;width:42%;transform:translateX(-50%)">${PATIENTS[k]({sick:true, mood:'sad'})}</button>
+      </div>
+      <div class="choices" id="opts">${opts.map(o => `<button class="choice" data-o="${o}">It's ${art(o)} ${o}.</button>`).join('')}</div><div class="fb" id="fb"></div></div>`;
+    $('#leave').onclick = () => { sfx.click(); clinic(); };
+    later(() => say('Who is this?', true), 250);
+    $$('#opts .choice').forEach(b => b.onclick = () => {
+      if (step) return; const o = b.dataset.o; say(`It's ${art(o)} ${o}.`);
+      if (o === k){ step = 1; sfx.ok(); if (!miss) score++; b.style.background = '#dff3e5';
+        later(() => { $('#nbSay').textContent = `Let's help the ${k}! Tap it 3 times!`; say(`Let's help the ${k}!`, true); $('#opts').innerHTML = '<p class="note center">Нажми на зверька 3 раза, чтобы вылечить его 🩹💊❤️</p>'; }, 900);
+      } else { miss = true; sfx.bad(); b.classList.add('wrong'); anim(b,'shake'); }
+    });
+    $('#pat').onclick = () => {
+      if (step !== 1) return; taps++;
+      const fx = document.createElement('span'); fx.className = 'sparkle'; fx.textContent = ['🩹','💊','❤️'][taps-1] || '✨';
+      fx.style.left = (48 + Math.random()*24) + '%'; fx.style.top = (40 + Math.random()*20) + '%'; $('.inside').appendChild(fx); setTimeout(() => fx.remove(), 1000);
+      tone(700 + taps*150, .12, .05);
+      if (taps >= 3){ step = 2; $('#pat').innerHTML = PATIENTS[k]({mood:'joy'}); sfx.win(); $('#nbSay').textContent = `Thank you, doctor! 💖`; say('Thank you, doctor!', true);
+        later(() => { i++; if (i < kinds.length) round(); else vetEnd(score, kinds.length); }, 1800); }
+    };
+  };
+  round();
+}
+function vetEnd(score, n){
+  const coins = 6 + score*2; P.coins += coins; NEEDS.forEach(([k]) => P.stats[k] = clamp(P.stats[k] + 5, 0, 100)); save();
+  modal(`<div style="width:110px">${vetSVG({up:true})}</div><h2>Super doctor! 🩺</h2><p>You helped ${n} animals!</p><p class="note">First try: ${score} / ${n}</p>
+    <div class="rewards"><span>+${coins} 🪙</span><span>+10 XP</span></div><div class="mrow"><button class="btn white" id="vAgain">🔄 Again</button><button class="btn" id="vBack">🏥 Clinic</button></div>`, () => {
+      sfx.win(); confetti(['🐾','❤️','🩹']); say('Super doctor! Thank you!', true);
+      $('#vAgain').onclick = () => { closeModal(); vetGame(); }; $('#vBack').onclick = () => { closeModal(); clinic(); };
+    });
+  addXP(10);
+}
+
+/* ---------- games with friends ---------- */
+function gameDone(id, won){
+  const got = addFriend(id, 'game', 1); const coins = won === true ? 6 : won === null ? 3 : 2; P.coins += coins; save(); addXP(4);
+  return `<div class="rewards"><span>+${coins} 🪙</span>${got ? '<span>💗 +1</span>' : ''}</div>`;
+}
+function tictactoe(id){
+  TOWN = id; const N = NB[id]; const B = Array(9).fill(''); let over = false;
+  const LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  const winOf = b => { for (const l of LINES) if (b[l[0]] && b[l[0]] === b[l[1]] && b[l[1]] === b[l[2]]) return l; return null; };
+  view(`<button class="back" id="bk">← ${N.name}</button>
+    <div class="row" style="gap:10px;align-items:center"><div style="width:70px">${nbSVG(id)}</div><div class="card" style="padding:10px 14px;flex:1;font-weight:900" id="tSay">Let's play X and O! You are X. Your turn!</div></div>
+    <div class="ttt" id="ttt">${B.map((_,k) => `<button data-k="${k}"></button>`).join('')}</div>
+    <div class="row c"><span class="pill" style="color:#e0567a">You: X</span><span class="pill" style="color:#3d8be8">${N.name}: O</span></div>`);
+  const tSay = (t) => { $('#tSay').textContent = t; say(t.replace(/[^\x20-\x7E]/g,''), true); };
+  later(() => say("Let's play X and O! Your turn!", true), 250);
+  $('#bk').onclick = () => { sfx.click(); visit(id); };
+  const draw = () => $$('#ttt button').forEach((b,k) => { b.innerHTML = B[k] === 'x' ? '<svg viewBox="0 0 100 100"><path d="M24 24L76 76M76 24L24 76" stroke="#e0567a" stroke-width="15" stroke-linecap="round"/></svg>' : B[k] === 'o' ? '<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" stroke="#3d8be8" stroke-width="14" fill="none"/></svg>' : ''; b.className = B[k]; });
+  const finish = (res, line) => {
+    over = true; if (line) line.forEach(k => $$('#ttt button')[k].classList.add('win'));
+    const txt = res === 'x' ? 'You win! Well done!' : res === 'o' ? 'I win! Again?' : "It's a draw!";
+    tSay(txt); res === 'x' ? (sfx.win(), confetti()) : sfx.ok();
+    later(() => modal(`<div class="mp">${nbSVG(id,{mood:'joy'})}</div><h2>${txt}</h2>${gameDone(id, res === 'x' ? true : res === 'o' ? false : null)}<div class="mrow"><button class="btn white" id="gAgain">🔄 Again</button><button class="btn" id="gBack">🏠 ${N.name}</button></div>`,
+      () => { $('#gAgain').onclick = () => { closeModal(); tictactoe(id); }; $('#gBack').onclick = () => { closeModal(); visit(id); }; }), 1400);
+  };
+  const aiMove = () => {
+    const free = B.map((v,k) => v ? -1 : k).filter(k => k >= 0);
+    const tryLine = who => { for (const k of free){ const c = [...B]; c[k] = who; if (winOf(c)) return k; } return -1; };
+    let k = tryLine('o');
+    if (k < 0 && Math.random() < .75) k = tryLine('x');
+    if (k < 0 && !B[4] && Math.random() < .6) k = 4;
+    if (k < 0) k = rnd(free);
+    B[k] = 'o'; draw(); tone(520,.08,.04);
+    const w = winOf(B); if (w) return finish('o', w);
+    if (!B.includes('')) return finish('d');
+    tSay('Your turn!');
+  };
+  $$('#ttt button').forEach(b => b.onclick = () => {
+    const k = +b.dataset.k; if (over || B[k]) return;
+    B[k] = 'x'; draw(); sfx.click();
+    const w = winOf(B); if (w) return finish('x', w);
+    if (!B.includes('')) return finish('d');
+    over = true; $('#tSay').textContent = 'My turn… 🤔';
+    later(() => { over = false; aiMove(); }, 800);
+  });
+}
+function memory(id){
+  TOWN = id; const N = NB[id];
+  let pool = PACK.words.filter(w => !w.ph && hasPic(w) && w.en.length < 12); if (pool.length < 4) pool = ALL_KB.filter(w => !w.ph && hasPic(w));
+  const words = shuffle(pool).slice(0, 4);
+  const cards = shuffle(words.flatMap((w,i) => [{i, t:'pic', w}, {i, t:'word', w}]));
+  let open = [], done = 0, moves = 0;
+  view(`<button class="back" id="bk">← ${N.name}</button>
+    <div class="row" style="gap:10px;align-items:center"><div style="width:70px">${nbSVG(id)}</div><div class="card" style="padding:10px 14px;flex:1;font-weight:900" id="tSay">Find the pairs: a picture and its word!</div></div>
+    <div class="mem" id="mem">${cards.map((c,k) => `<button data-k="${k}"></button>`).join('')}</div>`);
+  later(() => say('Find the pairs! A picture and its word!', true), 250);
+  $('#bk').onclick = () => { sfx.click(); visit(id); };
+  const btns = $$('#mem button');
+  const face = k => cards[k].t === 'pic' ? picHTML(cards[k].w) : `<b class="w">${esc(cards[k].w.en)}</b>`;
+  btns.forEach(b => b.onclick = () => {
+    const k = +b.dataset.k; if (open.length >= 2 || b.classList.contains('open') || b.classList.contains('done')) return;
+    b.classList.add('open'); b.innerHTML = face(k); open.push(k); sfx.click(); if (cards[k].t === 'word') say(cards[k].w.en);
+    if (open.length === 2){
+      moves++; const [a, c] = open;
+      if (cards[a].i === cards[c].i){ later(() => { [a,c].forEach(x => { btns[x].classList.remove('open'); btns[x].classList.add('done'); }); open = []; done++; sfx.ok(); say(cards[a].w.en);
+          $('#tSay').textContent = `Yes! ${cards[a].w.en}!`;
+          if (done === words.length) later(() => modal(`<div class="mp">${nbSVG(id,{mood:'joy'})}</div><h2>All pairs! 🃏</h2><p>Moves: ${moves}</p>${gameDone(id, true)}<div class="mrow"><button class="btn white" id="gAgain">🔄 Again</button><button class="btn" id="gBack">🏠 ${N.name}</button></div>`,
+            () => { sfx.win(); confetti(); say('Well done! All pairs!', true); $('#gAgain').onclick = () => { closeModal(); memory(id); }; $('#gBack').onclick = () => { closeModal(); visit(id); }; }), 700); }, 500); }
+      else later(() => { [a,c].forEach(x => { btns[x].classList.remove('open'); btns[x].innerHTML = ''; }); open = []; }, 1100);
+    }
+  });
+}
+const boxSVG = () => `<svg viewBox="0 0 100 80"><path d="M8 26L30 6L50 22Z M92 26L70 6L50 22Z" fill="#e8b46b" ${TS}/><rect x="10" y="24" width="80" height="54" rx="3" fill="#d9a46b" ${TS}/><path d="M10 34H90" stroke="#b07740" stroke-width="3"/><rect x="40" y="44" width="20" height="10" rx="2" fill="#fff6d6" stroke="${TK}" stroke-width="2"/></svg>`;
+function hideSeek(id){
+  TOWN = id; const N = NB[id];
+  const SP = [
+    {id:'sofa', say:'behind the sofa', svg:() => DECO_SVG.sofa(), x:28, y:70, w:40, fx:28, fy:58, fw:20, z:'behind'},
+    {id:'lamp', say:'next to the lamp', svg:() => DECO_SVG.lamp(), x:84, y:72, w:16, fx:70, fy:72, fw:18, z:'front'},
+    {id:'table', say:'under the table', svg:() => SVGS.table, x:34, y:98, w:34, fx:34, fy:96, fw:16, z:'behind'},
+    {id:'box', say:'in the box', svg:boxSVG, x:76, y:98, w:26, fx:76, fy:84, fw:17, z:'behind'}
+  ];
+  const order = shuffle([...SP, ...shuffle(SP).slice(0,1)]); let i = 0, score = 0, miss = false;
+  const round = () => {
+    clearTimers(); miss = false;
+    const t = order[i], line = `I'm ${t.say}!`;
+    main.innerHTML = `<div class="view"><div class="acttop"><button class="back" id="leave">← ${N.name}</button><div class="pbar"><i style="width:${i/order.length*100}%"></i></div><b>${i+1} / ${order.length}</b></div>
+      <div class="scene hide" id="hide" style="background:${N.bg}"><div class="bubble" id="hSay" style="top:4%">🙈 Find me! ${line} 🔊</div>
+        ${SP.map(s => `<button class="spot" data-s="${s.id}" style="left:${s.x}%;top:${s.y}%;width:${s.w}%;z-index:${s.id === 'lamp' ? 2 : 3}">${s.svg()}</button>`).join('')}
+      </div><div class="fb" id="fb">Tap the right place!</div></div>`;
+    $('#leave').onclick = () => { sfx.click(); visit(id); };
+    $('#hSay').onclick = () => say(line, true);
+    later(() => say(`Find me! ${line}`, true), 250);
+    let found = false;
+    $$('.spot').forEach(b => b.onclick = () => {
+      if (found) return; const s = SP.find(x => x.id === b.dataset.s);
+      if (s === t){
+        found = true; if (!miss) score++; sfx.ok();
+        const f = document.createElement('div'); f.style.cssText = `position:absolute;left:${s.fx}%;top:${s.fy}%;width:${s.fw}%;transform:translate(-50%,-100%);z-index:${s.z === 'behind' ? 1 : 4};animation:pop .5s`;
+        f.innerHTML = nbSVG(id, {mood:'joy'}); $('#hide').appendChild(f);
+        $('#hSay').textContent = `Here I am! ${line} 😄`; say(`Here I am! ${line}`, true);
+        $('#fb').className = 'fb ok'; $('#fb').textContent = `✔ ${line}`;
+        later(() => { i++; if (i < order.length) round(); else later(() => modal(`<div class="mp">${nbSVG(id,{mood:'joy'})}</div><h2>You found me! 🙈</h2><p class="note">First try: ${score} / ${order.length}</p>${gameDone(id, true)}<div class="mrow"><button class="btn white" id="gAgain">🔄 Again</button><button class="btn" id="gBack">🏠 ${N.name}</button></div>`,
+          () => { sfx.win(); confetti(); $('#gAgain').onclick = () => { closeModal(); hideSeek(id); }; $('#gBack').onclick = () => { closeModal(); visit(id); }; }), 100); }, 2000);
+      } else { miss = true; sfx.bad(); anim(b,'shake'); const no = `No! I'm not ${s.say}. ${line}`; $('#fb').className = 'fb bad'; $('#fb').textContent = no; say(no, true); }
+    });
+  };
+  round();
 }
 
 /* ================= MY WORDS ================= */
